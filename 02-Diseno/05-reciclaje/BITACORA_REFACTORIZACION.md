@@ -1,0 +1,11 @@
+# 11. Bitácora de Reciclaje (Refactorización Continua — Python 3.12)
+
+En el diagrama XP del PDF este paso se llama **Reciclaje** *(Refactoring)*: mejorar la estructura interna del código **Python 3.12** después de poner en verde las pruebas TDD con `pytest`, sin alterar el comportamiento observado.
+
+| ID | Qué se detectó (Code Smell) | Cómo se recicló (Patrón / Cambio aplicado) | Archivos afectados | Verificado por Tests |
+| :--- | :--- | :--- | :--- | :--- |
+| **REF-01** | `HLarva.comer(...)` contenía `if/elif/else` rígidos para decidir la evolución según el número de grupo. | Se extrajo la interfaz **`EvolucionStrategy`** (`abc.ABC`, Patrón Strategy); ahora el Grupo 6 usa por defecto `HRastreadora` (`AHervivoro`) y puede cambiarse sin tocar `HLarva` (Principio Abierto/Cerrado). | `h_larva.py`, `evolucion_strategy.py` | `test_hormiga.py` (Verde) |
+| **REF-02** | El borrador inicial modelaba los alimentos como `str`, propenso a errores de tipeo (`"Nectar"` vs `"Néctar"`). | Se refactorizó a la jerarquía polimórfica **`Alimento`** (`abc.ABC`) $\rightarrow$ `Nectar`, `ACarnivoro`, `AOmnivoro`, `AHervivoro` conforme al UML del PDF. | `alimento.py` y subclases | `test_hormiga.py` (Verde) |
+| **REF-03** | El diagrama del `.md` desalineaba `IHormiga.comer` (`None`) y hacía que `IIA` heredara de `Hormiga`. | Se alineó exactamente con `pkAntCiberDronContract` del PDF en Python: **`IHormiga.comer(self, a: Alimento) -> bool`**, atributos `Id/sexo/estado` en `Hormiga`, y **`AntCiberDron(IIA)` implementa `IIA`**. | `i_hormiga.py`, `hormiga.py`, `ant_ciber_dron.py` | Suite `pytest` (Verde) |
+| **REF-04** | La lógica de lectura CSV y spinner estaba mezclada en `main.py` del MVP. | Se extrajo `SistemaRuso.readCoord(fileName: str) -> list[CoordenadaUK]` y `Utility.mostrarLoading(...)` dentro de `pkAntCiberDronContract`. | `sistema_ruso.py`, `utility.py`, `coordenada_uk.py` | `test_sistema_ruso.py` (Verde) |
+| **REF-05** | Los menús de consola consultaban directamente archivos y sentencias SQL dentro de las opciones del menú. | Se separó la capa de persistencia en `ant.db` (DAOs SQLite con `sqlite3`) y la lógica de negocio en `Hormiguero` y `AntCiberDron`. | `ant.ui.*`, `ant.db.*`, `hormiguero.py` | `test_persistencia_sqlite.py` (Verde) |

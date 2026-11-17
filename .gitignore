@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+dist/
+build/
+.env
+
+# Base de datos SQLite generada en ejecución
+data/*.db
+data/*.db-journal
+data/*.db-wal
+data/*.db-shm
+
+# Entornos e IDEs
+.vscode/
+.idea/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db

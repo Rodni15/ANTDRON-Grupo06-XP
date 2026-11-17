@@ -1,0 +1,2 @@
+# Python 3.12 — sqlite3, abc y csv vienen incluidos en la librería estándar
+pytest>=8.0

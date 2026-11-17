@@ -1,0 +1,16 @@
+Geoposición ; Lunes ; Martes ; Miércoles ; Jueves ; Viernes ; Tipo Arsenal
+# PLANTILLA Grupo06.csv (Reemplazar con cada dígito de las 4 cédulas del equipo)
+# Regla del PDF original:
+#   0 -> Coord-00 ; ; ; ; ; ; <palabra de a+>
+#   1 -> Coord-01 ; 01-02 ; ; ; ; ; <palabra de a+>
+#   2 -> Coord-02 ; ; 02-04 ; ; ; ; <palabra de ab*>
+#   3 -> Coord-03 ; ; ; 03-06 ; ; ; <palabra de abc>
+#   4 -> Coord-04 ; ; ; ; 04-08 ; ; <palabra de abcd*>
+#   5 -> Coord-05 ; ; ; ; ; 05-10 ; <palabra de abcdt+>
+#   6 -> Coord-06 ; ; ; ; 04-08 ; ; <palabra de abcdt+>
+#   7 -> Coord-07 ; ; ; 03-06 ; ; ; <palabra de abcd*>
+#   8 -> Coord-08 ; ; 02-04 ; ; ; ; <palabra de abc>
+#   9 -> Coord-09 ; 01-02 ; ; ; ; ; <palabra de ab*>
+Coord-01; 01-02 ; ; ; ; ; aaaa
+Coord-05; ; ; ; ; 05-10 ; abcdttt
+Coord-09; 01-02 ; ; ; ; ; ab
