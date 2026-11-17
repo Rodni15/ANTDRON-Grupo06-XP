@@ -1,5 +1,6 @@
 # Diagrama Obligatorio 1: Diagrama de Clases UML (Python 3.12 · PlantUML)
 
+> **Responsable (Parte 3):** **Oscar Tamayo (`I3`)**  
 > Alineado al **100% con el contrato oficial `pkAntCiberDronContract` del PDF** e implementado en **Python 3.12** (`abc.ABC`, `@abstractmethod` y tipado estático):
 > - `IHormiga.comer(self, a: Alimento) -> bool`
 > - `Hormiga` con `- Id: int`, `- sexo: str`, `- estado: str`, `__init__()` y `__str__()` (equivalente a `toString()`)

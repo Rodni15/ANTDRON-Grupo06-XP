@@ -1,6 +1,12 @@
 # Guía de Colaboración en el Repositorio — ANTDRON Grupo 06 (Python 3.12 · XP)
 
-Guía rápida para que los **4 integrantes (`I1`, `I2`, `I3`, `I4`)** clonen el repositorio, trabajen en ramas XP y mantengan `main` siempre en verde.
+Guía rápida para que los **4 integrantes (`I1 · Analy Yepez`, `I2 · Ronny Veloz`, `I3 · Oscar Tamayo`, `I4 · Mateo Yaguari`)** clonen el repositorio, trabajen en ramas XP y mantengan `main` siempre en verde.
+
+## Repartición por Partes
+- **Parte 1 (`Analy Yepez` — I1):** Login, equipo, `Grupo06.csv` y Diagrama de Casos de Uso (`feature/parte1-login-csv`).
+- **Parte 2 (`Ronny Veloz` — I2):** Autómata (`{2, 3, 5, 9}`), Bomba, tabla de destrucción, Grafo+Gramática y documento final (`feature/parte2-automata`).
+- **Parte 3 (`Oscar Tamayo` — I3):** Hormigas, `Alimento`, `IIA`, `AntCiberDron`, SQLite, Diagrama de Clases y MER (`feature/parte3-hormigas-dron`).
+- **Parte 4 (`Mateo Yaguari` — I4):** Pantallas del Hormiguero Virtual, `main.py`, Docker, pruebas `pytest` y Diagrama de Arquitectura (`feature/parte4-ui-docker`).
 
 ## 1. Clonar y preparar entorno local (Python 3.12)
 ```bash

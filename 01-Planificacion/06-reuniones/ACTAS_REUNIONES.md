@@ -1,27 +1,27 @@
 # 6. Actas y Protocolo de Reuniones XP
 
-> Aquí se registran las reuniones del equipo de 4 integrantes (**I1** Cliente/Gestor, **I2** Coach/Prog1, **I3** Tracker/Prog2, **I4** Tester) para el proyecto ANTDRON en **Python 3.12** (`pytest`, `sqlite3` y Docker).
+> Aquí se registran las reuniones del equipo de 4 integrantes (**I1 · Analy Yepez** [Parte 1 · Cliente/Gestor], **I2 · Ronny Veloz** [Parte 2 · Coach/Prog1], **I3 · Oscar Tamayo** [Parte 3 · Tracker/Prog2], **I4 · Mateo Yaguari** [Parte 4 · Tester]) para el proyecto ANTDRON en **Python 3.12** (`pytest`, `sqlite3` y Docker).
 
 ---
 
 ## Plantilla 1: Planning Game (Inicio de Iteración)
 - **Iteración:** `[1 / 2 / 3]` · **Fecha:** `[DD/MM/AAAA]` · **Duración:** `45 min`
-- **Participantes:** I1, I2, I3, I4.
+- **Participantes:** Analy Yepez (I1), Ronny Veloz (I2), Oscar Tamayo (I3), Mateo Yaguari (I4).
 - **Velocidad de referencia:** `[16 / promedio real]` pts.
-- **Historias seleccionadas por I1 (Cliente):** `[Ej. HU-01, HU-02, HU-04, HU-05]`.
+- **Historias seleccionadas por I1 (Analy Yepez · Cliente):** `[Ej. HU-01, HU-02, HU-04, HU-05]`.
 - **Riesgos identificados:** `[Ej. Confirmar grupo 6 con el docente; formato exacto del loading en Docker]`.
-- **Compromiso del equipo:** Ninguna historia pasa a terminada sin pruebas TDD en verde y aceptación de I1 + I4.
+- **Compromiso del equipo:** Ninguna historia pasa a terminada sin pruebas TDD en verde y aceptación de Analy (I1) + Mateo (I4).
 
 ---
 
 ## Plantilla 2: Daily Stand-up (Diario — 10 minutos)
 
 | Fecha | Integrante | ¿Qué hice ayer? | ¿Qué haré hoy? | Bloqueos detectados |
-| :--- | :---: | :--- | :--- | :--- |
-| `[DD/MM]` | **I1** *(Cliente/Gestor)* | `[Ej. Redacté criterios de HU-02]` | `[Ej. Validar formato Grupo06.csv]` | `[Ninguno]` |
-| `[DD/MM]` | **I2** *(Coach/Prog1)* | `[Ej. Tarjetas CRC de Hormiga]` | `[Ej. Pareja con I3 en HLarva]` | `[Confirmar estrategia Grupo 6]` |
-| `[DD/MM]` | **I3** *(Tracker/Prog2)* | `[Ej. Spike de loading \ | / - |]` | `[Ej. Implementar readCoord()]` | `[Ninguno]` |
-| `[DD/MM]` | **I4** *(Tester)* | `[Ej. Tests pytest de Login]` | `[Ej. Configurar GitHub Actions]` | `[Probar TTY en Docker]` |
+| :--- | :--- | :--- | :--- | :--- |
+| `[DD/MM]` | **I1 · Analy Yepez** *(Parte 1 · Cliente/Gestor)* | `[Ej. Redacté criterios de HU-02]` | `[Ej. Generar Grupo06.csv y Casos de Uso]` | `[Ninguno]` |
+| `[DD/MM]` | **I2 · Ronny Veloz** *(Parte 2 · Coach/Prog1)* | `[Ej. Grafo y Gramática {2,3,5,9}]` | `[Ej. Implementar BombaAutomata]` | `[Confirmar estrategia Grupo 6]` |
+| `[DD/MM]` | **I3 · Oscar Tamayo** *(Parte 3 · Tracker/Prog2)* | `[Ej. Diagrama de Clases y MER]` | `[Ej. Implementar Hormiga/HLarva/Dron]` | `[Ninguno]` |
+| `[DD/MM]` | **I4 · Mateo Yaguari** *(Parte 4 · Tester)* | `[Ej. Tests pytest + Arquitectura]` | `[Ej. Pantallas Hormiguero y Docker]` | `[Probar TTY en Docker]` |
 
 ---
 

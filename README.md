@@ -1,20 +1,20 @@
 # Proyecto ANTDRON / AntCiberDron — Grupo 06 (Metodología XP)
 
 > **Escuela Politécnica Nacional (EPN) · Facultad de Ingeniería en Informática · Metodologías Ágiles**  
-> **Metodología:** Extreme Programming (XP) | **Lenguaje:** Python 3.12 | **Diagramas:** PlantUML | **Equipo:** 4 integrantes (`[PENDIENTE: Nombres y Cédulas]`) | **Metáfora:** Hormiguero Cibernético
+> **Metodología:** Extreme Programming (XP) | **Lenguaje:** Python 3.12 | **Diagramas:** PlantUML | **Equipo:** 4 integrantes (`Analy Yepez`, `Ronny Veloz`, `Oscar Tamayo`, `Mateo Yaguari`) | **Metáfora:** Hormiguero Cibernético
 
-Carpeta completa del proyecto organizada alrededor de las **4 fases y 17 pasos de XP**, incluyendo los **5 diagramas obligatorios en PlantUML**, la configuración **Python 3.12 / Docker / CI** lista y la estructura completa de paquetes Python en `src/` *(sin implementar código `.py` todavía hasta contar con las 4 cédulas)*.
+Carpeta completa del proyecto organizada alrededor de las **4 fases y 17 pasos de XP**, incluyendo los **5 diagramas obligatorios en PlantUML**, la configuración **Python 3.12 / Docker / CI** lista y la estructura completa de paquetes Python en `src/` *(lista para que cada integrante desarrolle su parte)*.
 
 ---
 
-## Equipo de 4 Integrantes y Roles XP
+## Equipo de 4 Integrantes, Roles XP y Repartición por Partes
 
-| Integrante | Cédula / Nombre | Roles XP Asignados | Responsabilidad Principal |
+| Integrante | Cédula · Nombre | Roles XP Asignados | Parte Asignada y Responsabilidad Principal |
 | :--- | :--- | :--- | :--- |
-| **I1** | `[Cédula 1]` · `[Nombre 1]` | **Cliente (KGD)** + **Gestor (Big Boss)** | Historias de usuario, prioridad, criterios de aceptación, gestión de releases y entrega. |
-| **I2** | `[Cédula 2]` · `[Nombre 2]` | **Coach XP** + **Programador 1** | Disciplina XP (TDD, CRC, Reciclaje, Metáfora) y programación en pareja (`pkAntCiberDronContract`, `IIA`, `AntCiberDron`). |
-| **I3** | `[Cédula 3]` · `[Nombre 3]` | **Tracker** + **Programador 2** | Velocidad, burndown, rotaciones y programación en pareja (`SistemaRuso`, `Hormigas`, `SQLite`, menús de consola). |
-| **I4** | `[Cédula 4]` · `[Nombre 4]` | **Tester** *(+ Pair Review / QA / Docker)* | Pruebas TDD (pytest), aceptación con I1, pipeline CI y verificación Docker (`-0.5` cero incidentes). |
+| **I1** | `1721396412` · **Analy Yepez** *(último dígito `2`)* | **Cliente (KGD)** + **Gestor (Big Boss)** | **Parte 1 — Login, equipo y CSV:** Login (máx. 3 intentos), presentación del equipo, `Grupo06.csv` con loading animado, **Diagrama de Casos de Uso** y criterios de aceptación. |
+| **I2** | `1724490055` · **Ronny Veloz** *(último dígito `5`)* | **Coach XP** + **Programador 1** | **Parte 2 — Autómata y documento:** `BombaAutomata` (`ab* ∪ abc ∪ abcdt+`), Bomba e impresión de coordenadas a destruir, **Grafo y Gramática del Autómata**, portada/roles y documento final. |
+| **I3** | `1722578703` · **Oscar Tamayo** *(último dígito `3`)* | **Tracker** + **Programador 2** | **Parte 3 — Hormigas y `AntCiberDron`:** Jerarquía `Hormiga`/`HLarva`/`Alimento`, `IIA`, `AntCiberDron` (armas, turbo, fuente, idiomas), SQLite, **Diagrama de Clases**, **MER** y métricas XP. |
+| **I4** | `1726389099` · **Mateo Yaguari** *(último dígito `9`)* | **Tester** *(QA / CI / Docker)* | **Parte 4 — Pantallas y Docker:** Pantallas de consola del Hormiguero Virtual (`ant.ui`), flujo en `main.py`, pruebas `pytest`, Dockerización, CI, **Diagrama de Arquitectura** y `-0.5` cero incidentes. |
 
 > El docente (`patmic`) actúa como evaluador final y usuario administrativo (`patmic` / `123`). Ver detalle completo en [`docs-analisis/01-ROLES-EQUIPO-4-INTEGRANTES.md`](docs-analisis/01-ROLES-EQUIPO-4-INTEGRANTES.md).
 
@@ -89,8 +89,8 @@ ANTDRON-Grupo06-XP/
 
 ---
 
-## Cómo continuar cuando tengas las 4 cédulas
+## Cómo continuar el desarrollo por partes
 
-1. Abre [`xp-framework.html`](xp-framework.html) para recorrer visualmente las fases XP, los 5 diagramas y qué va en cada archivo.
-2. Completa los datos del equipo en [`docs-analisis/01-ROLES-EQUIPO-4-INTEGRANTES.md`](docs-analisis/01-ROLES-EQUIPO-4-INTEGRANTES.md) y copia tu prompt desde [`PROMPT_IMPLEMENTACION.md`](PROMPT_IMPLEMENTACION.md).
-3. Con el prompt se generarán automáticamente `data/Grupo06.csv`, las clases Python 3.12 dentro de `src/`, los tests TDD con `pytest` y el grafo PlantUML/gramática final del autómata en [`02-Diseno/diagramas/03-automata-grafo-gramatica.md`](02-Diseno/diagramas/03-automata-grafo-gramatica.md).
+1. Abre [`xp-framework.html`](xp-framework.html) para recorrer visualmente las fases XP, los 5 diagramas en PlantUML y la repartición de cada integrante.
+2. Revisa la asignación oficial de roles y entregables en [`docs-analisis/01-ROLES-EQUIPO-4-INTEGRANTES.md`](docs-analisis/01-ROLES-EQUIPO-4-INTEGRANTES.md) y el prompt maestro en [`PROMPT_IMPLEMENTACION.md`](PROMPT_IMPLEMENTACION.md).
+3. Cada integrante implementa su parte (`Parte 1` Analy, `Parte 2` Ronny, `Parte 3` Oscar, `Parte 4` Mateo) en ramas `feature/...`, pasando pruebas TDD con `pytest` y validación final dentro de Docker.

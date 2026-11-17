@@ -1,7 +1,8 @@
 # 1. Tarjetas de Historias de Usuario (Story Cards)
 
 > **Stack de implementación:** **Python 3.12** (POO estricta con `abc.ABC`, consola interactiva, `sqlite3`, `pytest` y Docker) · **Diagramas:** **PlantUML**.  
-> En XP, cada historia se escribe en una tarjeta simple y comprensible para el Cliente (**I1**).  
+> **Repartición por Partes:** **Parte 1 (`HU-01`, `HU-02`):** Analy Yepez (`I1`) · **Parte 2 (`HU-03`, `HU-11`):** Ronny Veloz (`I2`) · **Parte 3 (`HU-04`..`HU-08`):** Oscar Tamayo (`I3`) · **Parte 4 (`HU-09`, `HU-10`):** Mateo Yaguari (`I4`).  
+> En XP, cada historia se escribe en una tarjeta simple y comprensible para el Cliente (**I1 · Analy Yepez**).  
 > **Anverso:** Identificador, Título, Prioridad, Puntos, Iteración y narrativa simple (*Como... quiero... para...*).  
 > **Reverso:** Criterios de aceptación verificables por el Tester (**I4**) y aprobados por el Cliente (**I1**).  
 > **Escala de estimación:** Fibonacci (`1, 2, 3, 5, 8`). **1 punto ≈ 2–3 horas** de trabajo de la pareja (`I2 + I3`). Total: **52 puntos**.
@@ -25,7 +26,7 @@
 ## Tarjeta `HU-03`: Bomba Inteligente con Autómata (`IIA.buscar`)
 | **ANVERSO (Frente de la Tarjeta)** | **REVERSO (Criterios de Aceptación)** |
 | :--- | :--- |
-| **ID:** `HU-03` · **Iteración:** 2 (`R2`)<br>**Prioridad:** Alta · **Estimación:** `5 pts`<br><br>**Como** operador de la KGD,<br>**quiero** que el `AntCiberDron` analice cada tipo de arsenal usando un autómata construido con nuestras cédulas,<br>**para** detonar únicamente en las coordenadas objetivo autorizadas. | - [ ] El autómata reconoce la unión de los lenguajes asociados al **último dígito de las 4 cédulas**.<br>- [ ] `AntCiberDron` implementa `IIA` (`abc.ABC`) en Python y su método `buscar(tipoArsenal: str) -> bool` retorna `True` o `False` según el autómata (sin depender de `re` en producción, validado por tablas/estados $\delta$).<br>- [ ] Imprime la tabla `COORDENADAS UCRANIANAS A DESTRUIR: Geoposición \| Tipo Arsenal \| Acción` solo para las detonaciones (`true`).<br>**Valida:** I1 (Cliente) & I4 (Tester) |
+| **ID:** `HU-03` · **Iteración:** 2 (`R2`) · **Parte 2 (Ronny Veloz)**<br>**Prioridad:** Alta · **Estimación:** `5 pts`<br><br>**Como** operador de la KGD,<br>**quiero** que el `AntCiberDron` analice cada tipo de arsenal usando un autómata construido con nuestras cédulas (`{2, 5, 3, 9}`),<br>**para** detonar únicamente en las coordenadas objetivo autorizadas. | - [ ] El autómata reconoce la unión de los lenguajes asociados al **último dígito de las 4 cédulas (`{2, 5, 3, 9}` $\rightarrow L = \{ab^*, abc, abcdt^+\}$)**.<br>- [ ] `AntCiberDron` implementa `IIA` (`abc.ABC`) en Python y su método `buscar(tipoArsenal: str) -> bool` retorna `True` o `False` según el autómata (sin depender de `re` en producción, validado por tablas/estados $\delta$).<br>- [ ] Imprime la tabla `COORDENADAS UCRANIANAS A DESTRUIR: Geoposición \| Tipo Arsenal \| Acción` solo para las detonaciones (`true`).<br>**Valida:** I1 (Analy) & I4 (Mateo) |
 
 ---
 

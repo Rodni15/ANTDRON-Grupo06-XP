@@ -1,5 +1,6 @@
 # Diagrama Obligatorio 3: Autómata de la Bomba (Definición Formal, Grafo PlantUML y Gramática — Python 3.12)
 
+> **Responsable (Parte 2):** **Ronny Veloz (`I2`)**  
 > **Regla oficial del PDF:**  
 > Se toma el **último dígito de la cédula de cada integrante del equipo** (4 integrantes $\rightarrow$ hasta 4 coordenadas distintas).  
 > El lenguaje $L$ de la bomba es la **unión de los lenguajes** correspondientes a esos dígitos en la tabla oficial de la OTAN/Ucrania.  
@@ -24,65 +25,85 @@
 
 ---
 
-## 2. Datos del Equipo (COMPLETAR CON LAS 4 CÉDULAS REALES)
+## 2. Datos Reales del Equipo (Grupo 06)
 
-- **Último dígito I1:** `[D1]` $\rightarrow$ `Coord-0[D1]` $\rightarrow$ `[L1]`
-- **Último dígito I2:** `[D2]` $\rightarrow$ `Coord-0[D2]` $\rightarrow$ `[L2]`
-- **Último dígito I3:** `[D3]` $\rightarrow$ `Coord-0[D3]` $\rightarrow$ `[L3]`
-- **Último dígito I4:** `[D4]` $\rightarrow$ `Coord-0[D4]` $\rightarrow$ `[L4]`
-- **Lenguaje Unido Resultante:** $L = \{ \text{[L1]}, \text{[L2]}, \text{[L3]}, \text{[L4]} \}$ *(eliminando duplicados)*.
+- **I1 · Analy Yepez (`1721396412`):** último dígito **`2`** $\rightarrow$ `Coord-02` (Martes `02-04`) $\rightarrow$ **`ab*`**
+- **I2 · Ronny Veloz (`1724490055`):** último dígito **`5`** $\rightarrow$ `Coord-05` (Viernes `05-10`) $\rightarrow$ **`abcdt+`**
+- **I3 · Oscar Tamayo (`1722578703`):** último dígito **`3`** $\rightarrow$ `Coord-03` (Miércoles `03-06`) $\rightarrow$ **`abc`**
+- **I4 · Mateo Yaguari (`1726389099`):** último dígito **`9`** $\rightarrow$ `Coord-09` (Lunes `01-02`) $\rightarrow$ **`ab*`**
+- **Lenguaje Unido Resultante (dígitos `{2, 3, 5, 9}`):**
+  $$L = \{ \text{ab}^*, \; \text{abc}, \; \text{abcdt}^+ \}$$
 
 ---
 
-## 3. Plantilla Formal $A = (Q, \Sigma, \delta, q_0, F)$ — *(Ejemplo guía con dígitos `{5, 9}` del PDF)*
+## 3. Definición Formal del AFD $A = (Q, \Sigma, \delta, q_0, F)$
 
-> **Nota:** Al implementar con las 4 cédulas reales, reemplazar $Q$, $\delta$, $F$, el Grafo PlantUML y la Gramática exactamente según la unión obtenida de `[D1..D4]`.
+- **Alfabeto:** $\Sigma = \{ a, b, c, d, t \}$
+- **Conjunto de Estados:** $Q = \{ q_0, q_1, q_2, q_{2b}, q_3, q_4, q_5, q_{\text{err}} \}$
+- **Estado Inicial:** $q_0$
+- **Estados de Aceptación:** $F = \{ q_1, q_2, q_{2b}, q_3, q_5 \}$
+  - `q1` acepta `a` (`ab*` con 0 `b`s).
+  - `q2` acepta `ab` (`ab*` con 1 `b`, y permite avanzar a `c` para `abc` / `abcdt+`).
+  - `q2b` acepta `abb+` (`ab*` con $\ge 2$ `b`s; impide aceptar palabras inválidas como `abbc`).
+  - `q3` acepta `abc` (y permite avanzar a `d` hacia `abcdt+`).
+  - `q4` es estado intermedio para `abcd` (**no** acepta, ya que `abcd*` no pertenece a `{2, 3, 5, 9}`).
+  - `q5` acepta `abcdt+`.
 
-- **Ejemplo de referencia PDF ($L = \{ \text{abcdt}^+, \text{ab}^* \}$):**
-  - $\Sigma = \{ a, b, c, d, t \}$
-  - $Q = \{ q_0, q_1, q_2, q_3, q_4, q_5, q_{\text{err}} \}$
-  - Estado inicial: $q_0$
-  - Estados de aceptación: $F = \{ q_1, q_2, q_5 \}$
-    - `q1` acepta `a` (caso `ab*` con 0 `b`s).
-    - `q2` acepta `ab+` (caso `ab*` con 1+ `b`s).
-    - `q5` acepta `abcdt+`.
+### Tabla de Transición $\delta$
 
-### Grafo de Transición (PlantUML — Plantilla de ejemplo `{5, 9}`)
+| Estado | `a` | `b` | `c` | `d` | `t` | ¿Acepta? |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **`q0` *(inicial)*** | `q1` | `q_err` | `q_err` | `q_err` | `q_err` | No |
+| **`q1`** | `q_err` | `q2` | `q_err` | `q_err` | `q_err` | **Sí** (`a`) |
+| **`q2`** | `q_err` | `q2b` | `q3` | `q_err` | `q_err` | **Sí** (`ab`) |
+| **`q2b`** | `q_err` | `q2b` | `q_err` | `q_err` | `q_err` | **Sí** (`abb+`) |
+| **`q3`** | `q_err` | `q_err` | `q_err` | `q4` | `q_err` | **Sí** (`abc`) |
+| **`q4`** | `q_err` | `q_err` | `q_err` | `q_err` | `q5` | No |
+| **`q5`** | `q_err` | `q_err` | `q_err` | `q_err` | `q5` | **Sí** (`abcdt+`) |
+| **`q_err` *(pozo)*** | `q_err` | `q_err` | `q_err` | `q_err` | `q_err` | No |
+
+### Grafo de Transición (PlantUML — Cédulas `{2, 3, 5, 9}`)
 ```plantuml
 @startuml
-title Grafo de Transición AFD (Plantilla de ejemplo {5, 9}) — BombaAutomata (Python 3.12)
+title Grafo de Transición AFD (Grupo 06: {2, 3, 5, 9}) — BombaAutomata (Python 3.12)
 hide empty description
 
 state "q0 (inicial)" as q0
 state "q1 [F]" as q1 #D1FAE5
 state "q2 [F]" as q2 #D1FAE5
-state "q3" as q3
+state "q2b [F]" as q2b #D1FAE5
+state "q3 [F]" as q3 #D1FAE5
 state "q4" as q4
 state "q5 [F]" as q5 #D1FAE5
 
 [*] --> q0
 q0 --> q1 : a
 q1 --> q2 : b
-q2 --> q2 : b
+q2 --> q2b : b
+q2b --> q2b : b
 q2 --> q3 : c
 q3 --> q4 : d
 q4 --> q5 : t
 q5 --> q5 : t
 
 note bottom of q5
-  Estados de aceptación: F = { q1, q2, q5 }
-  Transición no definida -> estado pozo q_err (rechaza)
+  L = { ab*, abc, abcdt+ }
+  F = { q1, q2, q2b, q3, q5 }
+  Cualquier otra transición va al estado pozo q_err (rechaza)
 end note
 @enduml
 ```
-*(En el AFD total, toda transición no indicada va al estado pozo $q_{\text{err}}$).*
+*(En el AFD total implementado en `BombaAutomata`, toda transición no indicada va al estado pozo $q_{\text{err}}$).*
 
-### Gramática Regular Equivalente $G = (V_N, V_T, P, S)$ — *(Ejemplo `{5, 9}`)*
-- $V_N = \{ S, A, B, C, D, E \}$, $V_T = \{ a, b, c, d, t \}$, $S = q_0$
+### Gramática Regular Equivalente $G = (V_N, V_T, P, S)$
+- $V_N = \{ S, A, B, B_2, C, D, E \}$ *(correspondientes a $q_0, q_1, q_2, q_{2b}, q_3, q_4, q_5$)*
+- $V_T = \{ a, b, c, d, t \}$
+- Símbolo inicial: $S$
 - Producciones $P$:
   - $S \rightarrow aA \mid a$ *(acepta `a`)*
-  - $A \rightarrow bA \mid b \mid bB$ *(acepta `ab*` y continúa hacia `abc...`)*
-  - $B \rightarrow cC$
-  - $C \rightarrow dD$
-  - $D \rightarrow tE \mid t$
-  - $E \rightarrow tE \mid t$
+  - $A \rightarrow bB \mid b$ *(acepta `ab`)*
+  - $B \rightarrow bB_2 \mid b \mid cC \mid c$ *(desde `ab`: deriva `abb+` o acepta `abc`)*
+  - $B_2 \rightarrow bB_2 \mid b$ *(acepta `abb+`)*
+  - $C \rightarrow dD$ *(desde `abc`, exige `d` para avanzar a `abcdt+`)*
+  - $D \rightarrow tE \mid t$ *(acepta `abcdt`)*
+  - $E \rightarrow tE \mid t$ *(acepta `abcdt+`)*

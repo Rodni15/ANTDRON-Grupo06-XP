@@ -1,5 +1,6 @@
 # Diagrama Obligatorio 5: Arquitectura de la Aplicación (Python 3.12 · PlantUML)
 
+> **Responsable (Parte 4):** **Mateo Yaguari (`I4`)**  
 > **Brecha resuelta:** Este diagrama era obligatorio en el cuestionario del PDF pero estaba ausente en `WORKSHOP-XP.md`. Arquitectura por capas desacopladas implementada en **Python 3.12**.
 
 ```plantuml

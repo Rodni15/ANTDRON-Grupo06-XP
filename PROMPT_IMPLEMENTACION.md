@@ -7,16 +7,16 @@ Copia y pega el prompt del bloque inferior (rellenando primero los 4 datos del e
 ```markdown
 Eres un equipo de ingeniería senior trabajando bajo la metodología Extreme Programming (XP) sobre la estructura ya creada del proyecto `ANTDRON-Grupo06-XP` (EPN). Ya existen todas las carpetas XP, los 5 diagramas obligatorios, `requirements.txt`, `main.py`, `Dockerfile`, `docker-compose.yml`, `.github/workflows/ci.yml` y la jerarquía de paquetes en `src/`. Ahora debes implementar todo el código Python, pruebas TDD y datos reales.
 
-## 1. DATOS DEL EQUIPO (4 INTEGRANTES Y ROLES XP)
+## 1. DATOS DEL EQUIPO (4 INTEGRANTES, ROLES XP Y REPARTICIÓN POR PARTES)
 Completa e inyecta exactamente estos datos en `Grupo06.csv`, en el login del sistema, en el mensaje `[+] TEAM [6]`, en el autómata de la bomba y en la documentación XP:
-- Nombre del Equipo / Metáfora: [NOMBRE_DEL_EQUIPO]
+- Nombre del Equipo / Metáfora: Hormiguero Cibernético
 - Fecha: [DD/MM/AAAA]
-- I1 (Cliente interno KGD + Gestor Big Boss): Cédula = [CEDULA_1], Nombre = [NOMBRE_1], Usuario = [USER_1], Clave = [PASS_1]
-- I2 (Coach XP + Programador 1): Cédula = [CEDULA_2], Nombre = [NOMBRE_2], Usuario = [USER_2], Clave = [PASS_2]
-- I3 (Tracker + Programador 2): Cédula = [CEDULA_3], Nombre = [NOMBRE_3], Usuario = [USER_3], Clave = [PASS_3]
-- I4 (Tester / QA / CI / Docker): Cédula = [CEDULA_4], Nombre = [NOMBRE_4], Usuario = [USER_4], Clave = [PASS_4]
+- I1 — Parte 1 (Login, equipo y CSV · Cliente interno KGD + Gestor Big Boss): Cédula = `1721396412`, Nombre = `Analy Yepez` (último dígito `2` -> `Coord-02` / `ab*`), Usuario = `[USER_1]`, Clave = `[PASS_1]`
+- I2 — Parte 2 (Autómata y documento · Coach XP + Programador 1): Cédula = `1724490055`, Nombre = `Ronny Veloz` (último dígito `5` -> `Coord-05` / `abcdt+`), Usuario = `[USER_2]`, Clave = `[PASS_2]`
+- I3 — Parte 3 (Hormigas y AntCiberDron · Tracker + Programador 2): Cédula = `1722578703`, Nombre = `Oscar Tamayo` (último dígito `3` -> `Coord-03` / `abc`), Usuario = `[USER_3]`, Clave = `[PASS_3]`
+- I4 — Parte 4 (Pantallas y Docker · Tester / QA / CI / Docker): Cédula = `1726389099`, Nombre = `Mateo Yaguari` (último dígito `9` -> `Coord-09` / `ab*`), Usuario = `[USER_4]`, Clave = `[PASS_4]`
 - Usuario administrativo obligatorio adicional: usuario = `patmic`, clave = `123`
-- Decisión Grupo 6 para evolución de larva: [HRastreadora con AHervivoro (por defecto) / o indicar si el docente confirmó otro]
+- Decisión Grupo 6 para evolución de larva: `HRastreadora` con `AHervivoro` (por defecto en `EvolucionStrategy`, a confirmar si el docente indica otro)
 
 ## 2. STACK TECNOLÓGICO OBLIGATORIO
 - Lenguaje: Python 3.12 (POO estricta con paquetes `pkAntCiberDronContract` y `ant.*`; interfaces y clases abstractas con `abc.ABC` y `@abstractmethod`)
@@ -68,14 +68,14 @@ Implementa exactamente dentro del paquete `pkAntCiberDronContract`:
      ```
 
 ### C. Autómata Finito de la Bomba (`BombaAutomata` + `AntCiberDron(IIA)`)
-- Toma el **último dígito de cada una de las 4 cédulas**. Construye el autómata formal $A = (Q, \Sigma, \delta, q_0, F)$ que reconozca la unión de los lenguajes correspondientes a esos dígitos (implementado en Python mediante estados y tabla de transición $\delta$ propia, NO usando `re.fullmatch` en producción; usa el módulo `re` únicamente en los tests de `pytest` como oráculo comparativo).
+- Con el **último dígito de cada una de las 4 cédulas (`{2, 5, 3, 9}`)**, el lenguaje unido es $L = \{ \text{ab}^*, \; \text{abc}, \; \text{abcdt}^+ \}$. Implementa el autómata formal $A = (Q, \Sigma, \delta, q_0, F)$ definido en `02-Diseno/diagramas/03-automata-grafo-gramatica.md` mediante estados y tabla de transición $\delta$ propia en Python (NO usando `re.fullmatch` en producción; usa el módulo `re` únicamente en los tests de `pytest` como oráculo comparativo).
 - **`AntCiberDron` implementa `IIA` (`abc.ABC`)**: `buscar(self, tipoArsenal: str) -> bool` evalúa la palabra en `BombaAutomata`, retorna `True`/`False` y en la ejecución de búsqueda presenta en consola:
   ```
   COORDENADAS UCRANIANAS A DESTRUIR:
   Geoposición | Tipo Arsenal | Acción
   Coord-XX    | <palabra>    | true
   ```
-- Actualiza `02-Diseno/diagramas/03-automata-grafo-gramatica.md` con la definición formal exacta $A=(Q,\Sigma,\delta,q_0,F)$, el grafo **PlantUML** real y la gramática regular exacta derivada de las 4 cédulas reales.
+- Verifica que `02-Diseno/diagramas/03-automata-grafo-gramatica.md` mantenga la definición formal exacta $A=(Q,\Sigma,\delta,q_0,F)$, el grafo **PlantUML** y la gramática regular exacta derivada de las 4 cédulas reales (`{2, 3, 5, 9}`).
 
 ### D. Jerarquía de Hormigas y Alimento (`ant.hormiguero`, `ant.alimento`)
 - `Hormiga` abstracta (`abc.ABC`) que implementa `IHormiga`: atributos `Id: int`, `sexo: str`, `estado: str` (`"VIVA"`/`"MUERTA"`), constructor `__init__()` (`Hormiga()`) y `__str__()` (equivalente a `toString()`).

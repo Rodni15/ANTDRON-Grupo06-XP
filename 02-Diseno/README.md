@@ -18,10 +18,10 @@ En la **Fase de Diseño** del proyecto en **Python 3.12**, el equipo encabezado 
 
 En cuanto a **diagramas obligatorios**, el enunciado exige **exclusivamente estos 5** (todos modelados en **PlantUML** dentro de [`diagramas/`](diagramas/01-diagrama-clases.md)):
 
-| # | Diagrama Obligatorio | Archivo | Estado |
-| :---: | :--- | :--- | :--- |
-| **1** | **Diagrama de Clases** (`pkAntCiberDronContract` + dominio) | [`diagramas/01-diagrama-clases.md`](diagramas/01-diagrama-clases.md) | Completo |
-| **2** | **Diagrama de Casos de Uso** | [`diagramas/02-diagrama-casos-de-uso.md`](diagramas/02-diagrama-casos-de-uso.md) | Completo |
-| **3** | **Grafo con Gramática del Autómata** | [`diagramas/03-automata-grafo-gramatica.md`](diagramas/03-automata-grafo-gramatica.md) | Plantilla lista (completar con las 4 cédulas) |
-| **4** | **Modelo Entidad-Relación (MER)** | [`diagramas/04-modelo-entidad-relacion.md`](diagramas/04-modelo-entidad-relacion.md) | Completo |
-| **5** | **Diagrama de la Arquitectura de la Aplicación** | [`diagramas/05-arquitectura-aplicacion.md`](diagramas/05-arquitectura-aplicacion.md) | Completo |
+| # | Diagrama Obligatorio | Archivo | Responsable | Estado |
+| :---: | :--- | :--- | :--- | :--- |
+| **1** | **Diagrama de Clases** (`pkAntCiberDronContract` + dominio) | [`diagramas/01-diagrama-clases.md`](diagramas/01-diagrama-clases.md) | **I3 · Oscar Tamayo** *(Parte 3)* | Completo |
+| **2** | **Diagrama de Casos de Uso** | [`diagramas/02-diagrama-casos-de-uso.md`](diagramas/02-diagrama-casos-de-uso.md) | **I1 · Analy Yepez** *(Parte 1)* | Completo |
+| **3** | **Grafo con Gramática del Autómata** | [`diagramas/03-automata-grafo-gramatica.md`](diagramas/03-automata-grafo-gramatica.md) | **I2 · Ronny Veloz** *(Parte 2)* | Completo (`{2, 3, 5, 9}`) |
+| **4** | **Modelo Entidad-Relación (MER)** | [`diagramas/04-modelo-entidad-relacion.md`](diagramas/04-modelo-entidad-relacion.md) | **I3 · Oscar Tamayo** *(Parte 3)* | Completo |
+| **5** | **Diagrama de la Arquitectura de la Aplicación** | [`diagramas/05-arquitectura-aplicacion.md`](diagramas/05-arquitectura-aplicacion.md) | **I4 · Mateo Yaguari** *(Parte 4)* | Completo |

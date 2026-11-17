@@ -1,14 +1,14 @@
 # 14. Bitácora de Programación por Parejas (Pair Programming — Python 3.12)
 
-**Regla XP del Coach (I2):** Todo código de producción **Python 3.12** en `src/` se escribe en pareja (**I2 + I3**), rotando **Driver** (quien escribe) y **Navigator** (quien revisa diseño, casos borde y contrato `pkAntCiberDronContract`) cada **30 minutos**. Al finalizar cada historia, **I4 (Tester)** ejecuta una sesión de *Pair Review / Testing* con `pytest` antes de fusionar a `main`.
+**Regla XP del Coach (I2 · Ronny Veloz):** Todo código de producción **Python 3.12** en `src/` se escribe o revisa en pareja (**Ronny Veloz · I2** + **Oscar Tamayo · I3**, junto con **Analy Yepez · I1** en Parte 1 y **Mateo Yaguari · I4** en Parte 4), rotando **Driver** y **Navigator** cada **30 minutos**. Al finalizar cada historia, **Mateo Yaguari (I4 · Tester)** ejecuta una sesión de *Pair Review / Testing* con `pytest` antes de fusionar a `main`.
 
 ## Registro de Sesiones (Plantilla)
 
-| Fecha | Iteración / HU | Driver (Teclado) | Navigator (Estrategia) | Revisor QA (I4) | Módulo Trabajado & Resultado |
-| :--- | :---: | :---: | :---: | :---: | :--- |
-| `[DD/MM]` | `It.1 / HU-01` | I3 | I2 | I4 | `AuthService` + `test_auth_service.py` (3 intentos). |
-| `[DD/MM]` | `It.1 / HU-02` | I2 | I3 | I4 | `SistemaRuso.readCoord` + `CoordenadaUK` + `Utility`. |
-| `[DD/MM]` | `It.1 / HU-04,05` | I2 / I3 | I3 / I2 | I4 | `IHormiga`, `Hormiga`, `HLarva`, `EvolucionStrategy`. |
-| `[DD/MM]` | `It.2 / HU-03` | I2 | I3 | I4 | `BombaAutomata` + `AntCiberDron(IIA)` (implementa `IIA`). |
-| `[DD/MM]` | `It.2 / HU-06,07,08` | I3 | I2 | I4 | Extremidades, `FuenteDePoder`, `Laser`, `ModuloIdioma`. |
-| `[DD/MM]` | `It.3 / HU-09,10` | I3 / I2 | I2 / I3 | I4 | `UI consola` + `SQLite` (`sqlite3`) + verificación Docker (`python:3.12-slim`). |
+| Fecha | Iteración / HU | Parte | Driver (Teclado) | Navigator (Estrategia) | Revisor QA (I4) | Módulo Trabajado & Resultado |
+| :--- | :---: | :---: | :---: | :---: | :---: | :--- |
+| `[DD/MM]` | `It.1 / HU-01` | **Parte 1** | I1 (Analy) | I2 (Ronny) | I4 (Mateo) | `AuthService` + `test_auth_service.py` (3 intentos). |
+| `[DD/MM]` | `It.1 / HU-02` | **Parte 1** | I1 (Analy) | I3 (Oscar) | I4 (Mateo) | `SistemaRuso.readCoord` + `CoordenadaUK` + `Utility` + `Grupo06.csv`. |
+| `[DD/MM]` | `It.1 / HU-04,05` | **Parte 3** | I3 (Oscar) | I2 (Ronny) | I4 (Mateo) | `IHormiga`, `Hormiga`, `HLarva`, `EvolucionStrategy`. |
+| `[DD/MM]` | `It.2 / HU-03` | **Parte 2** | I2 (Ronny) | I3 (Oscar) | I4 (Mateo) | `BombaAutomata` (`{2,3,5,9}`) + tabla de destrucción + `AntCiberDron(IIA)`. |
+| `[DD/MM]` | `It.2 / HU-06,07,08` | **Parte 3** | I3 (Oscar) | I2 (Ronny) | I4 (Mateo) | Extremidades, `FuenteDePoder`, `Laser`, `ModuloIdioma`. |
+| `[DD/MM]` | `It.3 / HU-09,10` | **Parte 4** | I4 (Mateo) | I3 (Oscar) | I1 (Analy) | `UI consola` (`main.py`) + `SQLite` (`sqlite3`) + verificación Docker (`python:3.12-slim`). |

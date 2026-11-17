@@ -1,5 +1,6 @@
 # Diagrama Obligatorio 2: Diagrama de Casos de Uso (Python 3.12 · PlantUML)
 
+> **Responsable (Parte 1):** **Analy Yepez (`I1`)**  
 > **Brecha resuelta:** Este diagrama era obligatorio en el cuestionario del PDF pero no había sido incluido en `WORKSHOP-XP.md`. Implementado sobre consola interactiva y persistencia SQLite en **Python 3.12**.
 
 ```plantuml
