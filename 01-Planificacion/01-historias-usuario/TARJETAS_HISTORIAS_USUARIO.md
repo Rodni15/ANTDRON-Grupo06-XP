@@ -40,14 +40,14 @@
 ## Tarjeta `HU-05`: Metamorfosis y Supervivencia por Tipo de Alimento
 | **ANVERSO (Frente de la Tarjeta)** | **REVERSO (Criterios de Aceptación)** |
 | :--- | :--- |
-| **ID:** `HU-05` · **Iteración:** 1 (`R1`)<br>**Prioridad:** Alta · **Estimación:** `5 pts`<br><br>**Como** encargado del hormiguero,<br>**quiero** que una larva se transforme en su tipo de hormiga al recibir su alimento correspondiente y muera si recibe otro,<br>**para** obtener hormigas especializadas y cumplir la regla biológica. | - [ ] Al comer el alimento de evolución configurado (estrategia por defecto del Grupo 6: `AHervivoro` $\rightarrow$ `HRastreadora`, parametrizable), la larva evoluciona y retorna `True`.<br>- [ ] La hormiga evolucionada solo sigue viva si come su alimento asignado (`ACarnivoro`/`AOmnivoro`/`AHervivoro`).<br>- [ ] Si una larva o hormiga adulta recibe un alimento incorrecto, cambia su estado a `"MUERTA"` y retorna `False`.<br>**Valida:** I1 (Cliente) & I4 (Tester) |
+| **ID:** `HU-05` · **Iteración:** 1 (`R1`)<br>**Prioridad:** Alta · **Estimación:** `5 pts`<br><br>**Como** encargado del hormiguero,<br>**quiero** que una larva se transforme en su tipo de hormiga al recibir su alimento correspondiente y muera si recibe otro,<br>**para** obtener hormigas especializadas y cumplir la regla biológica. | - [ ] Al alimentar una larva viva con `AHervivoro()`, el hormiguero la sustituye por una `HRastreadora`, conserva su identificador y devuelve `True`.<br>- [ ] La rastreadora sigue viva con alimento herbívoro. Con néctar pasa a estado `"MUERTA"` y no puede revivir.<br>- [ ] Si una larva o hormiga adulta recibe un alimento incorrecto, cambia su estado a `"MUERTA"` y retorna `False`.<br>**Valida:** I1 (Cliente) & I4 (Tester) |
 
 ---
 
 ## Tarjeta `HU-06`: Ensamblaje del `AntCiberDron` (Extremidades, Armas y Turbo)
 | **ANVERSO (Frente de la Tarjeta)** | **REVERSO (Criterios de Aceptación)** |
 | :--- | :--- |
-| **ID:** `HU-06` · **Iteración:** 2 (`R2`)<br>**Prioridad:** Media · **Estimación:** `5 pts`<br><br>**Como** ingeniero de la KGD,<br>**quiero** armar el `AntCiberDron` con extremidades de hormiga, metralleta, láser y turbo reactor,<br>**para** que pueda volar y ejecutar ataques tierra-aire. | - [ ] Modela extremidades de hormiga (`6 patas`, cabeza/antenas, tórax, abdomen).<br>- [ ] Pata **delantera derecha** equipa `Metralleta`; pata **delantera izquierda** equipa `Laser` cuya potencia varía según la energía de la `FuenteDePoder`.<br>- [ ] Espalda equipa `TurboReactor` que permite `volar()` consumiendo energía de la fuente.<br>**Valida:** I1 (Cliente) & I4 (Tester) |
+| **ID:** `HU-06` · **Iteración:** 2 (`R2`)<br>**Prioridad:** Media · **Estimación:** `5 pts`<br><br>**Como** ingeniero de la KGD,<br>**quiero** armar el `AntCiberDron` con extremidades de hormiga, metralleta, láser y turbo reactor,<br>**para** consultar el estado de sus componentes y simular el vuelo con la energía disponible. | - [ ] Modela extremidades de hormiga (`6 patas`, cabeza/antenas, tórax, abdomen).<br>- [ ] Pata **delantera derecha** equipa `Metralleta`; pata **delantera izquierda** equipa `Laser` cuya potencia varía según la energía de la `FuenteDePoder`.<br>- [ ] Espalda equipa `TurboReactor` que permite `volar()` consumiendo energía de la fuente.<br>**Valida:** I1 (Cliente) & I4 (Tester) |
 
 ---
 

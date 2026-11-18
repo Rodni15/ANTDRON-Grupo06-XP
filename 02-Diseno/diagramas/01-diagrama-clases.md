@@ -1,177 +1,145 @@
-# Diagrama Obligatorio 1: Diagrama de Clases UML (Python 3.12 · PlantUML)
+# Grupo 06 · Diagrama de clases
 
-> **Responsable (Parte 3):** **Oscar Tamayo (`I2`)**  
-> Alineado al **100% con el contrato oficial `pkAntCiberDronContract` del PDF** e implementado en **Python 3.12** (`abc.ABC`, `@abstractmethod` y tipado estático):
-> - `IHormiga.comer(self, a: Alimento) -> bool`
-> - `Hormiga` con `- Id: int`, `- sexo: str`, `- estado: str`, `__init__()` y `__str__()` (equivalente a `toString()`)
-> - **`AntCiberDron` implementa `IIA`** (`+ buscar(self, tipoArsenal: str) -> bool`)
-> - Inclusión de `CoordenadaUK`, `Utility`, `SistemaRuso.readCoord(self, filename: str) -> list[CoordenadaUK]` y extremidades/armas/idiomas completos.
+El diagrama cubre la Parte 3 y los contratos que usa durante la integración. Ronny proporciona la implementación de `Evaluador`; Mateo conecta el menú con `Hormiguero` y `ModuloIdioma`.
+
+![Diagrama de clases del grupo 06](img/01-diagrama-clases.png)
 
 ```plantuml
 @startuml
-title Diagrama de Clases UML — ANTDRON / AntCiberDron (Python 3.12)
+title ANTDRON · Grupo 06 · Diagrama de clases
 skinparam classAttributeIconSize 0
 skinparam packageStyle rectangle
+hide empty members
 
-package "pkAntCiberDronContract (Python 3.12)" {
-  interface IHormiga <<abc.ABC>> {
-    + {abstract} comer(a: Alimento): bool
-  }
-  interface IIA <<abc.ABC>> {
-    + {abstract} buscar(tipoArsenal: str): bool
+package pkAntCiberDronContract {
+  class SistemaRuso {
+    +login(usuario, clave): bool
+    +readCoord(filename, mostrar): list
+    +mostrarEquipo(equipo, integrantes, numero)
   }
   class CoordenadaUK {
-    - geoposicion: str
-    - lunes: str
-    - martes: str
-    - miercoles: str
-    - jueves: str
-    - viernes: str
-    - tipoArsenal: str
-    + get_geoposicion(): str
-    + get_tipo_arsenal(): str
+    +getGeoposicion(): str
+    +getTipoArsenal(): str
+    +getHorarios(): list
   }
-  class Utility {
-    + {static} mostrarLoading(delay_ms: int): None
-    + {static} formatearFila(c: CoordenadaUK): str
-  }
-  class SistemaRuso {
-    + login(usuario: str, clave: str): bool
-    + readCoord(filename: str): list[CoordenadaUK]
-    + mostrarEquipo(equipo: str, integrantes: list): None
-    + evaluarDestruccion(dron: AntCiberDron, coords: list[CoordenadaUK]): None
-  }
+  class Utility
 }
 
-package "ant.hormiguero" {
-  abstract class Hormiga <<abc.ABC>> {
-    - Id: int
-    - sexo: str
-    - estado: str
-    + __init__()
-    + {abstract} comer(a: Alimento): bool
-    + morir(): None
-    + __str__(): str
-  }
-  class HLarva {
-    - estrategia: EvolucionStrategy
-    + __init__()
-    + comer(a: Alimento): bool
-    + evolucionar(): Hormiga
-  }
-  class HSoldado {
-    + __init__()
-    + comer(a: Alimento): bool
-  }
-  class HZangano {
-    + __init__()
-    + comer(a: Alimento): bool
-  }
-  class HRastreadora {
-    + __init__()
-    + comer(a: Alimento): bool
-  }
-  interface EvolucionStrategy <<abc.ABC>> {
-    + {abstract} alimentoRequerido(): Alimento
-    + {abstract} crearHormiga(id: int, sexo: str): Hormiga
-  }
-  class Hormiguero {
-    - hormigas: list[Hormiga]
-    + crearLarva(sexo: str): HLarva
-    + alimentar(id_hormiga: int, a: Alimento): bool
-    + listarHormigas(): list[Hormiga]
-  }
+package ant.ruso {
+  class AuthService
+  class Integrante
 }
 
-package "ant.alimento" {
-  abstract class Alimento <<abc.ABC>> {
-    + __init__()
-    + __str__(): str
-  }
+package ant.alimento {
+  abstract class Alimento
   class Nectar
-  class ACarnivoro
-  class AOmnivoro
   class AHervivoro
 }
 
-package "ant.iia" {
-  class BombaAutomata {
-    - estadoInicial: str
-    - estadosAceptacion: set[str]
-    + aceptar(cadena: str): bool
+package ant.hormiguero {
+  interface IHormiga {
+    +comer(alimento): bool
+  }
+  abstract class Hormiga {
+    +Id: int
+    +sexo: str
+    +estado: str
+    +morir()
+  }
+  class HLarva
+  class HRastreadora
+  class Hormiguero {
+    +crearLarva(sexo): HLarva
+    +alimentar(id_hormiga, alimento): bool
+    +listarHormigas(): list
   }
 }
 
-package "ant.dron" {
+package ant.iia {
+  interface Evaluador {
+    +explotar(palabra): bool
+  }
+  interface IIA {
+    +buscar(tipoArsenal): bool
+  }
+}
+
+package ant.dron {
   class AntCiberDron {
-    - id: int
-    - patas: list[Pata]
-    - metralletaDelanteraDer: Metralleta
-    - laserDelanteroIzq: Laser
-    - turboEspalda: TurboReactor
-    - fuente: FuenteDePoder
-    - bomba: BombaAutomata
-    - moduloIdioma: ModuloIdioma
-    + buscar(tipoArsenal: str): bool
-    + volar(): bool
-    + dispararMetralleta(): None
-    + dispararLaser(): int
-    + asistirRecargaFuente(): None
-    + asistirReemplazoFuente(nueva: FuenteDePoder): None
+    +buscar(tipoArsenal): bool
+    +volar(): bool
+    +dispararLaser(): int
+    +asistirRecargaFuente()
+    +asistirReemplazoFuente(nueva)
   }
   class FuenteDePoder {
-    - energia: int
-    - operativa: bool
-    + recargar(): None
-    + consumir(cantidad: int): bool
-    + getEnergia(): int
-  }
-  class Laser {
-    + calcularPotencia(f: FuenteDePoder): int
-  }
-  class Metralleta
-  class TurboReactor {
-    + activarVuelo(f: FuenteDePoder): bool
+    +getEnergia(): int
+    +consumir(cantidad): bool
+    +recargar()
   }
   class Pata {
-    - posicion: str
-    - armaEquipada: str
+    +posicion: str
+    +equipo
   }
+  class Metralleta
+  class Laser
+  class TurboReactor
   class ModuloIdioma {
-    - lexico: dict
-    - gramatica: list
-    - fonetica: list
-    + entrenar(area: str, dato: str, experto: ExpertoParlante): bool
+    +entrenar(idioma, area, dato, experto): bool
+    +consultar(idioma): tuple
   }
   class ExpertoParlante {
-    - nombre: str
-    - idioma: str
-    - certificado: bool
+    +nombre: str
+    +idioma: Idioma
+    +certificado: bool
+  }
+  class Entrenamiento
+  enum Idioma {
+    EN
+    ES
+  }
+  enum Area {
+    LEXICO
+    GRAMATICA
+    FONETICA
   }
 }
 
+package ant.db {
+  class SqliteConnection {
+    +abrir()
+  }
+}
+
+AuthService --> SistemaRuso
+SistemaRuso ..> Integrante
+SistemaRuso ..> CoordenadaUK
+SistemaRuso ..> Utility
 IHormiga <|.. Hormiga
 Hormiga <|-- HLarva
-Hormiga <|-- HSoldado
-Hormiga <|-- HZangano
 Hormiga <|-- HRastreadora
-HLarva --> EvolucionStrategy
 Alimento <|-- Nectar
-Alimento <|-- ACarnivoro
-Alimento <|-- AOmnivoro
 Alimento <|-- AHervivoro
+Hormiga ..> Alimento
+Hormiguero "1" o-- "0..*" Hormiga
+Hormiguero ..> HLarva : crea
+Hormiguero ..> HRastreadora : transforma
+Hormiguero --> "0..1" SqliteConnection
 IIA <|.. AntCiberDron
-AntCiberDron *-- BombaAutomata
-AntCiberDron *-- FuenteDePoder
-AntCiberDron *-- Laser
-AntCiberDron *-- Metralleta
+AntCiberDron --> Evaluador
+AntCiberDron o-- FuenteDePoder
+AntCiberDron *-- "6" Pata
 AntCiberDron *-- TurboReactor
-AntCiberDron *-- Pata
-AntCiberDron *-- ModuloIdioma
-ModuloIdioma --> ExpertoParlante
-Hormiguero o-- Hormiga
-SistemaRuso --> CoordenadaUK
-SistemaRuso --> Utility
-SistemaRuso --> AntCiberDron
+AntCiberDron o-- ModuloIdioma
+Pata --> "0..1" Laser
+Pata --> "0..1" Metralleta
+Laser ..> FuenteDePoder
+Metralleta ..> FuenteDePoder
+TurboReactor ..> FuenteDePoder
+ModuloIdioma ..> Entrenamiento
+ModuloIdioma --> "0..1" SqliteConnection
+Entrenamiento --> ExpertoParlante
+Entrenamiento --> Area
+ExpertoParlante --> Idioma
 @enduml
 ```

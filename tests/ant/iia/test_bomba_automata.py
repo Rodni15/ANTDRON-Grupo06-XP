@@ -43,6 +43,9 @@ def test_automata_acepta_palabras_validas_grupo06(automata: BombaAutomata, palab
     [
         "",
         "   ",
+        " abc ",
+        "abc\n",
+        "\tab",
         "aa",
         "aaa",
         "aaaa",
@@ -80,10 +83,11 @@ def test_alias_automata_y_recorrido():
     assert afd.evaluar("abcdt") is True
     assert afd.recorrido("abcdt") == ["q0", "q1", "q2", "q3", "q4", "q5"]
     assert afd.recorrido("abbc")[-1] == "q_err"
+    assert afd.recorrido("abc\n") == ["q0", "q1", "q2", "q3", "q_err"]
 
 
 def test_comparacion_masiva_contra_oraculo_re(automata: BombaAutomata):
-    alfabeto_prueba = ("a", "b", "c", "d", "t", "x")
+    alfabeto_prueba = ("a", "b", "c", "d", "t", "x", " ")
     for longitud in range(0, 7):
         for tupla in itertools.product(alfabeto_prueba, repeat=longitud):
             palabra = "".join(tupla)
