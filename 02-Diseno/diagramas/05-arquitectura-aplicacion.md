@@ -1,7 +1,7 @@
 # Diagrama Obligatorio 5: Arquitectura de la Aplicación (Python 3.12 · PlantUML)
 
 > **Responsable (Parte 4):** **Mateo Yaguari (`I4`)**  
-> **Brecha resuelta:** Este diagrama era obligatorio en el cuestionario del PDF pero estaba ausente en `WORKSHOP-XP.md`. Arquitectura por capas desacopladas implementada en **Python 3.12**.
+> **Brecha resuelta:** La Parte 4 incorpora una interfaz Flask que reutiliza los contratos y servicios del dominio. La consola `main.py` se conserva como alternativa.
 
 ```plantuml
 @startuml
@@ -10,8 +10,9 @@ skinparam packageStyle rectangle
 top to bottom direction
 
 package "Capa de Presentación (Python 3.12)" {
-  [Consola Interactiva (python main.py)\nLogin · Team · Loading Utility · Destrucción] as CLI
-  [Menús de consola (ant.ui)\nHormiguero Virtual · Crear/Alimentar · Dron · Reportes] as CONSOLE_UI
+  [Flask web_app.py\nLogin · Panel · Sesión] as WEB
+  [Plantillas HTML5 + CSS3\nDiseño responsive] as TEMPLATES
+  [Consola alternativa\npython main.py] as CLI
 }
 
 package "Contratos Oficiales (pkAntCiberDronContract · abc.ABC)" {
@@ -39,10 +40,12 @@ package "Empaquetado, Calidad y Despliegue" {
   [Docker python:3.12-slim + docker-compose.yml] as DOCKER
 }
 
+WEB --> TEMPLATES
+WEB --> SR
+WEB --> HOR
+WEB --> DRON
 CLI --> SR
-CONSOLE_UI --> HOR
-CONSOLE_UI --> DRON
-CONSOLE_UI --> DB
+WEB --> DB
 SR --> CSV
 SR --> UT
 SR --> DRON

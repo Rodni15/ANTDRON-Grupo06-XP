@@ -13,6 +13,16 @@ class Nectar(Alimento):
         return "néctar"
 
 
+class ACarnivoro(Alimento):
+    def __str__(self) -> str:
+        return "carnívoro"
+
+
+class AOmnivoro(Alimento):
+    def __str__(self) -> str:
+        return "omnívoro"
+
+
 class AHervivoro(Alimento):
     def __str__(self) -> str:
         return "herbívoro"

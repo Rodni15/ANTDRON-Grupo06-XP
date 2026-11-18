@@ -12,7 +12,7 @@ class SqliteConnection:
             db.executescript("""
                 CREATE TABLE IF NOT EXISTS hormiga (
                     id INTEGER PRIMARY KEY,
-                    tipo TEXT NOT NULL CHECK (tipo IN ('HLarva', 'HRastreadora')),
+                    tipo TEXT NOT NULL CHECK (tipo IN ('HLarva', 'HRastreadora', 'HSoldado', 'HZangano')),
                     sexo TEXT NOT NULL,
                     estado TEXT NOT NULL CHECK (estado IN ('VIVA', 'MUERTA'))
                 );

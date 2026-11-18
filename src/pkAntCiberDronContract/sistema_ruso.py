@@ -51,6 +51,6 @@ class SistemaRuso:
                 sys.stdout.write(f"\r{'100%':<8}| {Utility.formatearFila(c)}\n")
         return coordenadas
 
-    def evaluarDestruccion(self, dron, coords: list[CoordenadaUK]) -> None:
-        """Pendiente: lo implementa quien tenga el AntCiberDron (dron.buscar por coordenada)."""
-        raise NotImplementedError("Se implementa junto con AntCiberDron / IIA")
+    def evaluarDestruccion(self, dron, coords: list[CoordenadaUK]) -> list[CoordenadaUK]:
+        """Devuelve las coordenadas cuyo arsenal es aceptado por el dron."""
+        return [coord for coord in coords if dron.buscar(coord.getTipoArsenal())]

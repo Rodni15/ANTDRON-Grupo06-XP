@@ -94,3 +94,50 @@ ANTDRON-Grupo06-XP/
 1. Abre [`xp-framework.html`](xp-framework.html) para recorrer visualmente las fases XP, los 5 diagramas en PlantUML y la repartición de cada integrante.
 2. Revisa la asignación oficial de roles y entregables en [`docs-analisis/01-ROLES-EQUIPO-4-INTEGRANTES.md`](docs-analisis/01-ROLES-EQUIPO-4-INTEGRANTES.md) y el prompt maestro en [`PROMPT_IMPLEMENTACION.md`](PROMPT_IMPLEMENTACION.md).
 3. Cada integrante implementa su parte (`Parte 1` Analy, `Parte 2` Ronny, `Parte 3` Oscar, `Parte 4` Mateo) en ramas `feature/...`, pasando pruebas TDD con `pytest` y validación final dentro de Docker.
+
+## Interfaz web de la Parte 4
+
+La aplicación web reutiliza `SistemaRuso`, `AntCiberDron` y `Hormiguero`; no duplica
+la lógica del dominio en las rutas Flask. Para ejecutarla localmente con Python 3.12:
+
+```powershell
+python -m pip install -r requirements.txt
+python web_app.py
+```
+
+Abre `http://localhost:5000`. Las credenciales de los integrantes y del docente
+se cargan desde `data/integrantes.json` y `SistemaRuso`, respectivamente.
+
+Con Docker Desktop operativo:
+
+```powershell
+docker compose config
+docker compose build
+docker compose up
+```
+
+El servicio publica el puerto 5000. `python main.py` se conserva como entrada de
+consola alternativa. Si el motor Linux de Docker no está iniciado, `build` y
+`up` no podrán ejecutarse hasta iniciar Docker Desktop.
+
+### Diseño y navegación
+
+La interfaz web utiliza una paleta neutra, tipografía del sistema y componentes
+HTML/CSS responsivos. La navegación permite acceder al equipo, las coordenadas,
+el estado del AntCiberDron y el hormiguero sin recargar operaciones innecesarias.
+
+Las acciones muestran estados de procesamiento durante el envío de formularios
+sin simular porcentajes. Las coordenadas se cargan exclusivamente desde
+`data/Grupo06.csv`, y los cambios del hormiguero se leen de SQLite.
+
+### Verificaciones de Parte 4
+
+```powershell
+python -m pytest -q
+docker compose config
+docker compose build
+docker compose up -d
+docker compose ps
+docker compose logs --tail=40
+curl.exe -i http://127.0.0.1:5000/
+```

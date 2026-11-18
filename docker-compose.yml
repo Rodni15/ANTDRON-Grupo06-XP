@@ -2,7 +2,7 @@ services:
   antdron:
     build: .
     image: antdron:grupo6
-    stdin_open: true   # necesario para el login y los menús de consola
-    tty: true
+    ports:
+      - "5000:5000"
     volumes:
       - ./data:/app/data

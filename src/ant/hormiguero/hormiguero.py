@@ -2,10 +2,15 @@
 
 from ant.alimento.alimento import AHervivoro, Alimento
 from ant.db.sqlite_connection import SqliteConnection
-from ant.hormiguero.hormiga import HLarva, Hormiga, HRastreadora
+from ant.hormiguero.hormiga import HLarva, Hormiga, HRastreadora, HSoldado, HZangano
 
 
-TIPOS = {"HLarva": HLarva, "HRastreadora": HRastreadora}
+TIPOS = {
+    "HLarva": HLarva,
+    "HRastreadora": HRastreadora,
+    "HSoldado": HSoldado,
+    "HZangano": HZangano,
+}
 
 
 class Hormiguero:
