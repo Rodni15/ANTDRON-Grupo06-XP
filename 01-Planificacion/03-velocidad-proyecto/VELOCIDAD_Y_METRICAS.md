@@ -12,8 +12,8 @@
 
 | Iteración | Fecha | Puntos planificados | Puntos completados y aceptados | Velocidad acumulada | Observaciones |
 | :---: | :--- | :---: | :---: | :---: | :--- |
-| **1** | Mar 17/11 | 8 | 8 *(pendiente firma de I1 e I4)* | 8 | HU-01 y HU-02 terminadas; 13 pruebas en verde. |
-| **2** | Mié 18/11 | 26 | `[Completar al cierre]` | `[ ]` | `[ ]` |
+| **1** | Mar 17/11 | 8 | 8 *(aceptadas por I1 · Ronny Veloz)* | 8 | HU-01 y HU-02 terminadas y aceptadas; 13 pruebas en verde. |
+| **2** | Mié 18/11 | 26 | 5 *(en curso: HU-03 lista; faltan HU-04..08)* | 13 *(parcial)* | HU-03 (`BombaAutomata` + `Bomba` + `mostrar_destruir`) terminada con pruebas en verde. |
 | **3** | Jue 19/11 | 18 | `[Completar al cierre]` | `[ ]` | `[ ]` |
 
 ## Burndown (52 pts → 0)
@@ -31,7 +31,7 @@
 | :--- | :--- | :---: | :--- | :--- | :--- |
 | HU-01 | Inicio de sesión seguro | 3 | Analy | ✅ Terminada | `test_auth_service.py`, `test_sistema_ruso.py` |
 | HU-02 | Datos del equipo y lectura de `Grupo06.csv` | 5 | Analy | ✅ Terminada | `test_sistema_ruso.py`, `test_utility.py`, `test_arsenal_catalogo.py` |
-| HU-03 | Bomba con autómata (`IIA.buscar`) | 5 | Ronny | ⏳ Pendiente | `[ ]` |
+| HU-03 | Bomba con autómata (`IIA.buscar`) | 5 | Ronny | ✅ Terminada | `test_bomba_automata.py` (39 casos + oráculo `re` + CSV real) |
 | HU-04 | Nacimiento como `HLarva` | 3 | Óscar | ⏳ Pendiente | `[ ]` |
 | HU-05 | Metamorfosis por alimento | 5 | Óscar | ⏳ Pendiente | `[ ]` |
 | HU-06 | Ensamblaje del `AntCiberDron` | 5 | Óscar | ⏳ Pendiente | `[ ]` |
@@ -39,4 +39,4 @@
 | HU-08 | Idiomas con expertos parlantes | 5 | Óscar | ⏳ Pendiente | `[ ]` |
 | HU-09 | Hormiguero Virtual (consola) | 8 | Mateo | ⏳ Pendiente | `[ ]` |
 | HU-10 | Docker sin incidentes | 5 | Mateo | ⏳ Pendiente | `[ ]` |
-| HU-11 | 5 diagramas y bitácoras XP | 5 | Todos (cierra Ronny) | 🔄 En curso (casos de uso listo) | — |
+| HU-11 | 5 diagramas y bitácoras XP | 5 | Todos (cierra Ronny) | 🔄 En curso (casos de uso, autómata y plantilla final listos) | — |
