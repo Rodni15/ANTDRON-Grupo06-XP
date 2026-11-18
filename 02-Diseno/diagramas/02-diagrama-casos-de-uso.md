@@ -1,6 +1,6 @@
-# Diagrama Obligatorio 2: Diagrama de Casos de Uso (Python 3.12 · PlantUML)
+# Diagrama de Casos de Uso
 
-> **Responsable (Parte 1):** **Analy Yepez (`I3`)**
+Elaborado por: Analy Yépez
 
 ![Diagrama de casos de uso](img/02-casos-de-uso.png)
 
