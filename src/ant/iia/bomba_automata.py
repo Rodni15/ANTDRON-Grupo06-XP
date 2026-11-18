@@ -42,13 +42,9 @@ class BombaAutomata:
         """Devuelve la secuencia de estados visitados al evaluar la cadena."""
         if not isinstance(cadena, str):
             return [self.estadoError]
-        palabra = cadena.strip()
-        if not palabra:
-            return [self.estadoInicial]
-
         estado = self.estadoInicial
         visitados = [estado]
-        for simbolo in palabra:
+        for simbolo in cadena:
             if simbolo not in self.alfabeto:
                 estado = self.estadoError
             else:
@@ -60,12 +56,8 @@ class BombaAutomata:
         """Retorna True si la palabra pertenece a L = {ab*, abc, abcdt+}."""
         if not isinstance(cadena, str):
             return False
-        palabra = cadena.strip()
-        if not palabra:
-            return False
-
         estado = self.estadoInicial
-        for simbolo in palabra:
+        for simbolo in cadena:
             if simbolo not in self.alfabeto:
                 return False
             estado = self.transiciones.get(estado, {}).get(simbolo, self.estadoError)

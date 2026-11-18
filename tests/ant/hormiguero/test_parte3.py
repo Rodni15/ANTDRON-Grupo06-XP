@@ -6,6 +6,7 @@ from ant.dron.ant_ciber_dron import AntCiberDron, FuenteDePoder, Laser, Metralle
 from ant.dron.modulo_idioma import Area, ExpertoParlante, Idioma, ModuloIdioma
 from ant.hormiguero.hormiga import HLarva, HRastreadora
 from ant.hormiguero.hormiguero import Hormiguero
+from ant.iia import Bomba, mostrar_destruir
 from ant.iia.iia import IIA
 from pkAntCiberDronContract.sistema_ruso import SistemaRuso
 
@@ -67,3 +68,13 @@ def test_entrenamiento_certificado_persiste_por_idioma(tmp_path):
     modulo = ModuloIdioma(db)
     assert [registro.contenido for registro in modulo.consultar(Idioma.EN)] == ["th"]
     assert {registro.area for registro in modulo.consultar(Idioma.ES)} == set(Area)
+
+
+def test_csv_bomba_y_dron_comparten_el_contrato():
+    csv = Path(__file__).resolve().parents[3] / "data" / "Grupo06.csv"
+    filas = SistemaRuso().readCoord(csv, mostrar=False)
+    bomba = Bomba()
+    esperadas = [fila for fila in filas if bomba.explotar(fila.getTipoArsenal())]
+    assert len(filas) == 40
+    assert len(esperadas) == 29
+    assert mostrar_destruir(filas, AntCiberDron(bomba)) == esperadas
