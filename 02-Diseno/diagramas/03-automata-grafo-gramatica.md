@@ -1,6 +1,6 @@
 # Diagrama Obligatorio 3: Autómata de la Bomba (Definición Formal, Grafo PlantUML y Gramática — Python 3.12)
 
-> **Responsable (Parte 2):** **Ronny Veloz (`I2`)**  
+> **Responsable (Parte 2):** **Ronny Veloz (`I1`)**  
 > **Regla oficial del PDF:**  
 > Se toma el **último dígito de la cédula de cada integrante del equipo** (4 integrantes $\rightarrow$ hasta 4 coordenadas distintas).  
 > El lenguaje $L$ de la bomba es la **unión de los lenguajes** correspondientes a esos dígitos en la tabla oficial de la OTAN/Ucrania.  
@@ -27,9 +27,9 @@
 
 ## 2. Datos Reales del Equipo (Grupo 06)
 
-- **I1 · Analy Yepez (`1721396412`):** último dígito **`2`** $\rightarrow$ `Coord-02` (Martes `02-04`) $\rightarrow$ **`ab*`**
-- **I2 · Ronny Veloz (`1724490055`):** último dígito **`5`** $\rightarrow$ `Coord-05` (Viernes `05-10`) $\rightarrow$ **`abcdt+`**
-- **I3 · Oscar Tamayo (`1722578703`):** último dígito **`3`** $\rightarrow$ `Coord-03` (Miércoles `03-06`) $\rightarrow$ **`abc`**
+- **I3 · Analy Yepez (`1721396412`):** último dígito **`2`** $\rightarrow$ `Coord-02` (Martes `02-04`) $\rightarrow$ **`ab*`**
+- **I1 · Ronny Veloz (`1724490055`):** último dígito **`5`** $\rightarrow$ `Coord-05` (Viernes `05-10`) $\rightarrow$ **`abcdt+`**
+- **I2 · Oscar Tamayo (`1722578703`):** último dígito **`3`** $\rightarrow$ `Coord-03` (Miércoles `03-06`) $\rightarrow$ **`abc`**
 - **I4 · Mateo Yaguari (`1726389099`):** último dígito **`9`** $\rightarrow$ `Coord-09` (Lunes `01-02`) $\rightarrow$ **`ab*`**
 - **Lenguaje Unido Resultante (dígitos `{2, 3, 5, 9}`):**
   $$L = \{ \text{ab}^*, \; \text{abc}, \; \text{abcdt}^+ \}$$

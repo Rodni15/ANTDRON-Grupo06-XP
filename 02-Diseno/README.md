@@ -20,8 +20,8 @@ En cuanto a **diagramas obligatorios**, el enunciado exige **exclusivamente esto
 
 | # | Diagrama Obligatorio | Archivo | Responsable | Estado |
 | :---: | :--- | :--- | :--- | :--- |
-| **1** | **Diagrama de Clases** (`pkAntCiberDronContract` + dominio) | [`diagramas/01-diagrama-clases.md`](diagramas/01-diagrama-clases.md) | **I3 · Oscar Tamayo** *(Parte 3)* | Completo |
-| **2** | **Diagrama de Casos de Uso** | [`diagramas/02-diagrama-casos-de-uso.md`](diagramas/02-diagrama-casos-de-uso.md) | **I1 · Analy Yepez** *(Parte 1)* | Completo |
-| **3** | **Grafo con Gramática del Autómata** | [`diagramas/03-automata-grafo-gramatica.md`](diagramas/03-automata-grafo-gramatica.md) | **I2 · Ronny Veloz** *(Parte 2)* | Completo (`{2, 3, 5, 9}`) |
-| **4** | **Modelo Entidad-Relación (MER)** | [`diagramas/04-modelo-entidad-relacion.md`](diagramas/04-modelo-entidad-relacion.md) | **I3 · Oscar Tamayo** *(Parte 3)* | Completo |
+| **1** | **Diagrama de Clases** (`pkAntCiberDronContract` + dominio) | [`diagramas/01-diagrama-clases.md`](diagramas/01-diagrama-clases.md) | **I2 · Oscar Tamayo** *(Parte 3)* | Completo |
+| **2** | **Diagrama de Casos de Uso** | [`diagramas/02-diagrama-casos-de-uso.md`](diagramas/02-diagrama-casos-de-uso.md) | **I3 · Analy Yepez** *(Parte 1)* | Completo |
+| **3** | **Grafo con Gramática del Autómata** | [`diagramas/03-automata-grafo-gramatica.md`](diagramas/03-automata-grafo-gramatica.md) | **I1 · Ronny Veloz** *(Parte 2)* | Completo (`{2, 3, 5, 9}`) |
+| **4** | **Modelo Entidad-Relación (MER)** | [`diagramas/04-modelo-entidad-relacion.md`](diagramas/04-modelo-entidad-relacion.md) | **I2 · Oscar Tamayo** *(Parte 3)* | Completo |
 | **5** | **Diagrama de la Arquitectura de la Aplicación** | [`diagramas/05-arquitectura-aplicacion.md`](diagramas/05-arquitectura-aplicacion.md) | **I4 · Mateo Yaguari** *(Parte 4)* | Completo |

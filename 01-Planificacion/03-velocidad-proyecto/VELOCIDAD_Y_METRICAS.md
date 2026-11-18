@@ -1,28 +1,42 @@
 # 3. Velocidad del Proyecto y Métricas (Tracker)
 
-**Responsable:** **I3 (Tracker)** · **Revisor:** I2 (Coach) e I1 (Gestor) · **Proyecto:** ANTDRON en **Python 3.12** (`pytest`, `sqlite3`, Docker).
+**Responsable:** I3 (Tracker) — Analy Yépez · **Revisores:** I2 (Coach) — Óscar Tamayo e I1 (Gestor) — Ronny Veloz.
 
-## Cómo se calcula la Velocidad en nuestro equipo de 4
-- Contamos con **1 pareja activa de programación (`I2 + I3`)**, apoyada por **I4 (Tester)** en automatización QA/CI e **I1 (Cliente/Gestor)** en definiciones y aceptación rápida.
-- **Equivalencia inicial:** `1 punto XP ≈ 2.5 horas` de pareja productiva.
-- **Fórmula oficial:**
-  $$\text{Velocidad real} = \frac{\sum \text{Puntos de Historias Aceptadas por el Cliente}}{\text{Iteraciones completadas}}$$
+## Cómo se calcula la velocidad
+- Estimación en puntos Fibonacci (`1, 2, 3, 5, 8`); **1 punto ≈ 2–3 horas** de trabajo.
+- **Fórmula:**
+  $$\text{Velocidad} = \frac{\sum \text{puntos de historias aceptadas por el Cliente}}{\text{iteraciones completadas}}$$
+- *Regla XP:* solo cuentan las historias **terminadas, con pruebas en verde y aceptadas por I1 (Cliente) e I4 (Tester)**. El trabajo a medias cuenta 0 puntos.
 
-> *Regla XP ("Yesterday's Weather"):* Solo cuentan los puntos de historias **100% terminadas, con tests en verde y aceptadas por I1 (Cliente)** al final de la iteración. El trabajo a medias cuenta **0 puntos** para la velocidad de esa iteración.
+## Tablero de velocidad
 
-## Tablero de Velocidad (Plantilla de Seguimiento)
+| Iteración | Fecha | Puntos planificados | Puntos completados y aceptados | Velocidad acumulada | Observaciones |
+| :---: | :--- | :---: | :---: | :---: | :--- |
+| **1** | Mar 17/11 | 8 | 8 *(pendiente firma de I1 e I4)* | 8 | HU-01 y HU-02 terminadas; 13 pruebas en verde. |
+| **2** | Mié 18/11 | 26 | `[Completar al cierre]` | `[ ]` | `[ ]` |
+| **3** | Jue 19/11 | 18 | `[Completar al cierre]` | `[ ]` | `[ ]` |
 
-| Iteración | Puntos Planificados | Puntos Completados y Aceptados | Velocidad Acumulada | Variación / Ajuste |
-| :---: | :---: | :---: | :---: | :--- |
-| **Iteración 1** | 16 | `[Completar al cierre It.1]` | `[Pts It.1]` | `[Ej. Si se logran 14 pts, ajustar carga de It.2]` |
-| **Iteración 2** | 18 | `[Completar al cierre It.2]` | `[Promedio It.1-2]` | `[Rebalancear alcance no crítico si baja velocidad]` |
-| **Iteración 3** | 18 | `[Completar al cierre It.3]` | `[Promedio It.1-3]` | `[Cierre final: 52/52 pts]` |
+## Burndown (52 pts → 0)
 
-## Burndown de Puntos Restantes (Meta: 52 pts $\rightarrow$ 0 pts)
-
-| Hito | Puntos Restantes Planificados | Puntos Restantes Reales | Estado |
+| Hito | Restantes planificados | Restantes reales | Estado |
 | :--- | :---: | :---: | :--- |
-| Inicio del proyecto | `52` | `52` | Planificado |
-| Fin Iteración 1 | `36` | `[ ]` | En seguimiento |
-| Fin Iteración 2 | `18` | `[ ]` | En seguimiento |
-| Fin Iteración 3 (Entrega) | `0` | `[ ]` | Meta de aceptación |
+| Inicio del proyecto (17/11) | 52 | 52 | ✅ |
+| Fin Iteración 1 (17/11) | 44 | 44 | ✅ En plan |
+| Fin Iteración 2 (18/11, 20:00) | 18 | `[ ]` | En seguimiento |
+| Fin Iteración 3 (19/11, entrega) | 0 | `[ ]` | Meta |
+
+## Avance por historia
+
+| HU | Título | Pts | Responsable | Estado | Pruebas |
+| :--- | :--- | :---: | :--- | :--- | :--- |
+| HU-01 | Inicio de sesión seguro | 3 | Analy | ✅ Terminada | `test_auth_service.py`, `test_sistema_ruso.py` |
+| HU-02 | Datos del equipo y lectura de `Grupo06.csv` | 5 | Analy | ✅ Terminada | `test_sistema_ruso.py`, `test_utility.py`, `test_arsenal_catalogo.py` |
+| HU-03 | Bomba con autómata (`IIA.buscar`) | 5 | Ronny | ⏳ Pendiente | `[ ]` |
+| HU-04 | Nacimiento como `HLarva` | 3 | Óscar | ⏳ Pendiente | `[ ]` |
+| HU-05 | Metamorfosis por alimento | 5 | Óscar | ⏳ Pendiente | `[ ]` |
+| HU-06 | Ensamblaje del `AntCiberDron` | 5 | Óscar | ⏳ Pendiente | `[ ]` |
+| HU-07 | Fuente de poder con `IIA` | 3 | Óscar | ⏳ Pendiente | `[ ]` |
+| HU-08 | Idiomas con expertos parlantes | 5 | Óscar | ⏳ Pendiente | `[ ]` |
+| HU-09 | Hormiguero Virtual (consola) | 8 | Mateo | ⏳ Pendiente | `[ ]` |
+| HU-10 | Docker sin incidentes | 5 | Mateo | ⏳ Pendiente | `[ ]` |
+| HU-11 | 5 diagramas y bitácoras XP | 5 | Todos (cierra Ronny) | 🔄 En curso (casos de uso listo) | — |

@@ -11,9 +11,9 @@ Carpeta completa del proyecto organizada alrededor de las **4 fases y 17 pasos d
 
 | Integrante | Cédula · Nombre | Roles XP Asignados | Parte Asignada y Responsabilidad Principal |
 | :--- | :--- | :--- | :--- |
-| **I1** | `1721396412` · **Analy Yepez** *(último dígito `2`)* | **Cliente (KGD)** + **Gestor (Big Boss)** | **Parte 1 — Login, equipo y CSV:** Login (máx. 3 intentos), presentación del equipo, `Grupo06.csv` con loading animado, **Diagrama de Casos de Uso** y criterios de aceptación. |
-| **I2** | `1724490055` · **Ronny Veloz** *(último dígito `5`)* | **Coach XP** + **Programador 1** | **Parte 2 — Autómata y documento:** `BombaAutomata` (`ab* ∪ abc ∪ abcdt+`), Bomba e impresión de coordenadas a destruir, **Grafo y Gramática del Autómata**, portada/roles y documento final. |
-| **I3** | `1722578703` · **Oscar Tamayo** *(último dígito `3`)* | **Tracker** + **Programador 2** | **Parte 3 — Hormigas y `AntCiberDron`:** Jerarquía `Hormiga`/`HLarva`/`Alimento`, `IIA`, `AntCiberDron` (armas, turbo, fuente, idiomas), SQLite, **Diagrama de Clases**, **MER** y métricas XP. |
+| **I1** | `1724490055` · **Ronny Veloz** *(último dígito `5`)* | **Cliente (KGD)** + **Gestor (Big Boss)** | **Parte 2 — Autómata y documento:** `BombaAutomata` (`ab* ∪ abc ∪ abcdt+`), Bomba e impresión de coordenadas a destruir, **Grafo y Gramática del Autómata**, portada/roles, criterios de aceptación y documento final. |
+| **I2** | `1722578703` · **Oscar Tamayo** *(último dígito `3`)* | **Coach XP** + **Programador 1** | **Parte 3 — Hormigas y `AntCiberDron`:** Jerarquía `Hormiga`/`HLarva`/`Alimento`, `IIA`, `AntCiberDron` (armas, turbo, fuente, idiomas), SQLite, **Diagrama de Clases**, **MER** y prácticas XP (CRC, parejas, TDD). |
+| **I3** | `1721396412` · **Analy Yepez** *(último dígito `2`)* | **Tracker** + **Programador 2** | **Parte 1 — Login, equipo y CSV:** Login (máx. 3 intentos), presentación del equipo, `Grupo06.csv` con loading animado, **Diagrama de Casos de Uso** y métricas XP (velocidad, burndown, iteraciones). |
 | **I4** | `1726389099` · **Mateo Yaguari** *(último dígito `9`)* | **Tester** *(QA / CI / Docker)* | **Parte 4 — Pantallas y Docker:** Pantallas de consola del Hormiguero Virtual (`ant.ui`), flujo en `main.py`, pruebas `pytest`, Dockerización, CI, **Diagrama de Arquitectura** y `-0.5` cero incidentes. |
 
 > El docente (`patmic`) actúa como evaluador final y usuario administrativo (`patmic` / `123`). Ver detalle completo en [`docs-analisis/01-ROLES-EQUIPO-4-INTEGRANTES.md`](docs-analisis/01-ROLES-EQUIPO-4-INTEGRANTES.md).
