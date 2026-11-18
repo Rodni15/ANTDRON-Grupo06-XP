@@ -1,0 +1,34 @@
+{
+  "grupo": 6,
+  "equipo": "Hormiguero Cibernético",
+  "integrantes": [
+    {
+      "cedula": "1721396412",
+      "nombre": "Analy Yépez",
+      "usuario": "ayepez",
+      "clave": "123",
+      "rol": "Tracker + Programadora"
+    },
+    {
+      "cedula": "1724490055",
+      "nombre": "Ronny Veloz",
+      "usuario": "rveloz",
+      "clave": "123",
+      "rol": "Cliente + Gestor"
+    },
+    {
+      "cedula": "1722578703",
+      "nombre": "Óscar Tamayo",
+      "usuario": "otamayo",
+      "clave": "123",
+      "rol": "Coach + Programador"
+    },
+    {
+      "cedula": "1726389099",
+      "nombre": "Mateo Yaguari",
+      "usuario": "myaguari",
+      "clave": "123",
+      "rol": "Tester"
+    }
+  ]
+}

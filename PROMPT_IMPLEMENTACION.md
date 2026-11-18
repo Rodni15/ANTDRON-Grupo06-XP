@@ -11,9 +11,9 @@ Eres un equipo de ingeniería senior trabajando bajo la metodología Extreme Pro
 Completa e inyecta exactamente estos datos en `Grupo06.csv`, en el login del sistema, en el mensaje `[+] TEAM [6]`, en el autómata de la bomba y en la documentación XP:
 - Nombre del Equipo / Metáfora: Hormiguero Cibernético
 - Fecha: [DD/MM/AAAA]
-- I1 — Parte 1 (Login, equipo y CSV · Cliente interno KGD + Gestor Big Boss): Cédula = `1721396412`, Nombre = `Analy Yepez` (último dígito `2` -> `Coord-02` / `ab*`), Usuario = `[USER_1]`, Clave = `[PASS_1]`
-- I2 — Parte 2 (Autómata y documento · Coach XP + Programador 1): Cédula = `1724490055`, Nombre = `Ronny Veloz` (último dígito `5` -> `Coord-05` / `abcdt+`), Usuario = `[USER_2]`, Clave = `[PASS_2]`
-- I3 — Parte 3 (Hormigas y AntCiberDron · Tracker + Programador 2): Cédula = `1722578703`, Nombre = `Oscar Tamayo` (último dígito `3` -> `Coord-03` / `abc`), Usuario = `[USER_3]`, Clave = `[PASS_3]`
+- I3 — Parte 1 (Login, equipo y CSV · Tracker + Programador 2): Cédula = `1721396412`, Nombre = `Analy Yepez` (último dígito `2` -> `Coord-02` / `ab*`), Usuario = `[USER_1]`, Clave = `[PASS_1]`
+- I1 — Parte 2 (Autómata y documento · Cliente interno KGD + Gestor Big Boss): Cédula = `1724490055`, Nombre = `Ronny Veloz` (último dígito `5` -> `Coord-05` / `abcdt+`), Usuario = `[USER_2]`, Clave = `[PASS_2]`
+- I2 — Parte 3 (Hormigas y AntCiberDron · Coach XP + Programador 1): Cédula = `1722578703`, Nombre = `Oscar Tamayo` (último dígito `3` -> `Coord-03` / `abc`), Usuario = `[USER_3]`, Clave = `[PASS_3]`
 - I4 — Parte 4 (Pantallas y Docker · Tester / QA / CI / Docker): Cédula = `1726389099`, Nombre = `Mateo Yaguari` (último dígito `9` -> `Coord-09` / `ab*`), Usuario = `[USER_4]`, Clave = `[PASS_4]`
 - Usuario administrativo obligatorio adicional: usuario = `patmic`, clave = `123`
 - Decisión Grupo 6 para evolución de larva: `HRastreadora` con `AHervivoro` (por defecto en `EvolucionStrategy`, a confirmar si el docente indica otro)
