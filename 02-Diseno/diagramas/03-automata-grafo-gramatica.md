@@ -1,6 +1,6 @@
 # Diagrama Obligatorio 3: Autómata de la Bomba (Definición Formal, Grafo PlantUML y Gramática — Python 3.12)
 
-> **Responsable (Parte 2):** **Ronny Veloz (`I1`)**  
+> **Responsable (Parte 2):** **Ronny Veloz (`I1` · Cliente + Gestor)** · **Historias de Usuario asociadas:** **`HU-03`** *(Bomba Inteligente con Autómata)* y **`HU-11`** *(5 Diagramas Obligatorios y Documento Final)*  
 > **Regla oficial del PDF:**  
 > Se toma el **último dígito de la cédula de cada integrante del equipo** (4 integrantes $\rightarrow$ hasta 4 coordenadas distintas).  
 > El lenguaje $L$ de la bomba es la **unión de los lenguajes** correspondientes a esos dígitos en la tabla oficial de la OTAN/Ucrania.  
@@ -63,6 +63,9 @@
 | **`q_err` *(pozo)*** | `q_err` | `q_err` | `q_err` | `q_err` | `q_err` | No |
 
 ### Grafo de Transición (PlantUML — Cédulas `{2, 3, 5, 9}`)
+
+Fuente editable adicional: [`img/03-automata.puml`](img/03-automata.puml).
+
 ```plantuml
 @startuml
 title Grafo de Transición AFD (Grupo 06: {2, 3, 5, 9}) — BombaAutomata (Python 3.12)
@@ -107,3 +110,14 @@ end note
   - $C \rightarrow dD$ *(desde `abc`, exige `d` para avanzar a `abcdt+`)*
   - $D \rightarrow tE \mid t$ *(acepta `abcdt`)*
   - $E \rightarrow tE \mid t$ *(acepta `abcdt+`)*
+
+---
+
+## 4. Implementación en Python 3.12 (`src/ant/iia/`)
+
+- **`BombaAutomata` / `Automata`** ([`src/ant/iia/bomba_automata.py`](../../src/ant/iia/bomba_automata.py)):
+  - `aceptar(cadena: str) -> bool` y `evaluar(palabra: str) -> bool`: recorren la tabla $\delta$ carácter por carácter sin usar `re`.
+  - `recorrido(cadena: str) -> list[str]`: devuelve la traza de estados visitados desde `q0`.
+- **`Bomba` y `mostrar_destruir`** ([`src/ant/iia/bomba.py`](../../src/ant/iia/bomba.py)):
+  - `Bomba(automata).explotar(palabra: str) -> bool` (y alias `buscar(tipoArsenal: str) -> bool`).
+  - `mostrar_destruir(coordenadas, evaluador=None) -> list[CoordenadaUK]`: imprime la tabla `COORDENADAS UCRANIANAS A DESTRUIR` y retorna las 29 filas detonadas de `data/Grupo06.csv`.

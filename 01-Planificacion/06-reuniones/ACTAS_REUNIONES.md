@@ -18,6 +18,18 @@
 
 ---
 
+## Registro 2: Validación de Iteración 1 e Inicio / Avance de Iteración 2 (Parte 2)
+- **Fecha:** 17/11/2026 – 18/11/2026 · **Participantes:** Ronny Veloz (I1 · Cliente/Gestor), Óscar Tamayo (I2 · Coach/Prog1), Analy Yépez (I3 · Tracker/Prog2), Mateo Yaguari (I4 · Tester).
+- **Validación del Cliente (I1 · Ronny Veloz) de la Iteración 1:**
+  - `HU-01` (Login 3 intentos + `patmic`/`123`): **ACEPTADA** (3 pts).
+  - `HU-02` (Presentación `[+] TEAM [6]` + lectura animada de `data/Grupo06.csv` con 40 filas): **ACEPTADA** (5 pts).
+- **Avance de Iteración 2 — Parte 2 (`HU-03`, `HU-11`):**
+  - Se implementó `BombaAutomata` (`Automata`), `Bomba` y `mostrar_destruir` en `src/ant/iia/` siguiendo la tabla de transición $\delta$ de $\{2, 3, 5, 9\}$ ($L = \{ab^*, abc, abcdt^+\}$).
+  - Suite `tests/ant/iia/test_bomba_automata.py` en verde (incluye validación exhaustiva contra oráculo `re.fullmatch` y prueba real con las 40 filas de `data/Grupo06.csv`, detonando 29 objetivos).
+  - Se dejó listo el documento consolidado base en `docs-analisis/DOCUMENTO_FINAL_GRUPO06.md` con portada, metáfora y roles para integrar las Partes 3 y 4.
+
+---
+
 ## Plantilla 1: Planning Game (Inicio de Iteración)
 - **Iteración:** `[1 / 2 / 3]` · **Fecha:** `[DD/MM/AAAA]` · **Duración:** `45 min`
 - **Participantes:** Analy Yepez (I3), Ronny Veloz (I1), Oscar Tamayo (I2), Mateo Yaguari (I4).

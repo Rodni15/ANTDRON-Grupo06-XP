@@ -6,11 +6,11 @@
 
 | # | Criterio de Aceptación (PDF Original + XP) | Historia | Resultado | Verificado por |
 | :---: | :--- | :---: | :---: | :--- |
-| 1 | Login acepta a los **4 integrantes** (`Analy Yepez`, `Ronny Veloz`, `Oscar Tamayo`, `Mateo Yaguari`) y **`patmic`/`123`**; cierra al **3.er fallo** sin excepciones. | `HU-01` | `[ ] Pass` | I1 (Ronny) / I4 (Mateo) |
-| 2 | Muestra `[+] TEAM [6]: Hormiguero Cibernético` con las 4 cédulas y nombres reales. | `HU-02` | `[ ] Pass` | I1 (Ronny) / I4 (Mateo) |
-| 3 | `SistemaRuso.readCoord` lee `data/Grupo06.csv` animando `\ | / - |` hasta `100%` por línea y tabla exacta. | `HU-02` | `[ ] Pass` | I1 (Ronny) / I4 (Mateo) |
-| 4 | `AntCiberDron` implementa `IIA` y `buscar(tipoArsenal)` usa el autómata de los **4 últimos dígitos `{2, 5, 3, 9}`** ($L = \{ab^*, abc, abcdt^+\}$). | `HU-03` | `[ ] Pass` | I1 (Ronny) / I4 (Mateo) |
-| 5 | Imprime `COORDENADAS UCRANIANAS A DESTRUIR:` con `Geoposición | Tipo Arsenal | Acción` (`true`). | `HU-03` | `[ ] Pass` | I1 (Ronny) / I4 (Mateo) |
+| 1 | Login acepta a los **4 integrantes** (`Analy Yepez`, `Ronny Veloz`, `Oscar Tamayo`, `Mateo Yaguari`) y **`patmic`/`123`**; cierra al **3.er fallo** sin excepciones. | `HU-01` | `[x] Pass` | I1 (Ronny) / I4 (Mateo) |
+| 2 | Muestra `[+] TEAM [6]: Hormiguero Cibernético` con las 4 cédulas y nombres reales. | `HU-02` | `[x] Pass` | I1 (Ronny) / I4 (Mateo) |
+| 3 | `SistemaRuso.readCoord` lee `data/Grupo06.csv` animando `\ | / - |` hasta `100%` por línea y tabla exacta. | `HU-02` | `[x] Pass` | I1 (Ronny) / I4 (Mateo) |
+| 4 | `BombaAutomata` / `Bomba` evalúa el autómata de los **4 últimos dígitos `{2, 5, 3, 9}`** ($L = \{ab^*, abc, abcdt^+\}$) y se conecta a `AntCiberDron.buscar(tipoArsenal)`. | `HU-03` | `[x] Pass (AFD/Bomba)` | I1 (Ronny) / I4 (Mateo) |
+| 5 | Imprime `COORDENADAS UCRANIANAS A DESTRUIR:` con `Geoposición | Tipo Arsenal | Acción` (`true`). | `HU-03` | `[x] Pass` | I1 (Ronny) / I4 (Mateo) |
 | 6 | Toda hormiga nace como `HLarva`, vive con `Nectar`, evoluciona con su alimento y muere (`False`) con otro. | `HU-04,05` | `[ ] Pass` | I1 (Ronny) / I4 (Mateo) |
 | 7 | `AntCiberDron` tiene extremidades de hormiga: metralleta (del. derecha), láser (del. izquierda) y turbo (espalda). | `HU-06` | `[ ] Pass` | I1 (Ronny) / I4 (Mateo) |
 | 8 | Fuente de poder recargable y reemplazable bajo asistencia de `IIA`; afecta potencia del láser y vuelo. | `HU-07` | `[ ] Pass` | I1 (Ronny) / I4 (Mateo) |
