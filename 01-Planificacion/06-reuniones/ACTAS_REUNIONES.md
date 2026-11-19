@@ -30,6 +30,16 @@
 
 ---
 
+## Registro 3: Integración Partes 3 y 4, Revisión de Cumplimiento y Aceptación Final
+- **Fecha:** 18/11/2026 · **Participantes:** Ronny Veloz (I1 · Cliente/Gestor), Óscar Tamayo (I2 · Coach/Prog1), Analy Yépez (I3 · Tracker/Prog2), Mateo Yaguari (I4 · Tester).
+- **Resultados verificados en `main` (`PR #3`, `PR #4`, `PR #5`):**
+  - **Parte 3 (`HU-04`..`HU-08` — Óscar):** Implementada jerarquía `Hormiga`/`Alimento`, metamorfosis `HLarva` + `AHervivoro` $\rightarrow$ `HRastreadora`, `AntCiberDron(IIA)` conectado a `Bomba`, `ModuloIdioma` con `ExpertoParlante` y `SqliteConnection` (`data/antdron.db`), más diagramas PNG de Clases y MER. **ACEPTADA** por I1 e I4.
+  - **Parte 4 (`HU-09`, `HU-10` — Mateo + revisión PR #5):** Implementada aplicación web Flask (`web_app.py`), corregida evaluación individual por fila (`29` autorizadas de `40`), tabla separada de destrucción, animación progresiva, formulario EN/ES y pruebas web (`tests/test_web.py`). **68 casos de prueba en verde**. **ACEPTADA** por I1 e I4 (con nota de ejecutar `docker compose up` en máquina con Docker Desktop activo).
+  - **Cierre (`HU-11` — Ronny + equipo):** Completado [DOCUMENTO_FINAL_GRUPO06.md](../../docs-analisis/DOCUMENTO_FINAL_GRUPO06.md), actualizadas las tarjetas HU, matriz TDD, tablero de velocidad y firmada [CHECKLIST_ACEPTACION_CLIENTE.md](../../04-Pruebas/02-pruebas-aceptacion/CHECKLIST_ACEPTACION_CLIENTE.md).
+- **Acuerdo de mejora (Retrospectiva):** Validar resultados individuales por fila y pruebas de regresión HTTP antes de hacer merge a `main`.
+
+---
+
 ## Plantilla 1: Planning Game (Inicio de Iteración)
 - **Iteración:** `[1 / 2 / 3]` · **Fecha:** `[DD/MM/AAAA]` · **Duración:** `45 min`
 - **Participantes:** Analy Yepez (I3), Ronny Veloz (I1), Oscar Tamayo (I2), Mateo Yaguari (I4).
