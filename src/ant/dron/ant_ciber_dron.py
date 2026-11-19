@@ -75,7 +75,11 @@ class AntCiberDron(IIA):
         )
 
     def buscar(self, tipoArsenal: str) -> bool:
-        return self.bomba.explotar(tipoArsenal)
+        for nombre in ("buscar", "explotar", "evaluar", "aceptar"):
+            metodo = getattr(self.bomba, nombre, None)
+            if callable(metodo):
+                return bool(metodo(tipoArsenal))
+        raise TypeError("La bomba debe exponer un método de evaluación.")
 
     def volar(self) -> bool:
         return self.turboEspalda.activarVuelo(self.fuente)

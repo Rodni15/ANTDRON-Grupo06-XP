@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eef3f2">
+  <title>{% block title %}ANTDRON{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="barra">
+    <a class="marca" href="{{ url_for('panel') if session.get('autenticado') else url_for('login') }}" aria-label="Ir al centro de operaciones">
+      <span class="marca-simbolo" aria-hidden="true">A</span>
+      <span>ANTDRON</span>
+    </a>
+    {% if session.get('autenticado') %}
+    <div class="barra-derecha">
+      <span class="usuario-activo">{{ session.get('usuario') }}</span>
+      <form method="post" action="{{ url_for('cerrar_sesion') }}">
+        <button class="boton-secundario compacto" type="submit">Cerrar sesión</button>
+      </form>
+    </div>
+    {% endif %}
+  </header>
+  {% if session.get('autenticado') %}
+  <nav class="navegacion" aria-label="Navegación principal">
+    <a href="#equipo">Equipo</a>
+    <a href="#coordenadas">Coordenadas</a>
+    <a href="#dron">AntCiberDron</a>
+    <a href="#hormiguero">Hormiguero</a>
+  </nav>
+  {% endif %}
+  <main class="contenedor">
+    {% with mensajes = get_flashed_messages(with_categories=true) %}
+      {% if mensajes %}
+      <div class="mensajes" role="status" aria-live="polite">
+        {% for categoria, mensaje in mensajes %}
+        <div class="alerta {{ categoria }}">{{ mensaje }}</div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

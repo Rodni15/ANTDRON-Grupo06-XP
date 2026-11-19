@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Acceso | ANTDRON{% endblock %}
+{% block content %}
+<section class="login-contenido">
+  <aside class="login-presentacion" aria-label="Información del proyecto">
+    <p class="etiqueta">Proyecto académico · Grupo 06</p>
+    <h1>Hormiguero Cibernético</h1>
+    <p>Centro de coordinación del AntCiberDron, el sistema de coordenadas y el hormiguero virtual.</p>
+  </aside>
+  <div class="login-tarjeta">
+    <p class="eyebrow">ACCESO AL SISTEMA</p>
+    <h2>Iniciar sesión</h2>
+    <p class="texto-secundario">Introduce tus credenciales asignadas.</p>
+    {% if session.get('bloqueado') %}
+    <div class="estado-bloqueado">El acceso permanece bloqueado en esta sesión.</div>
+    {% else %}
+    <form method="post" action="{{ url_for('autenticar') }}" data-validacion>
+      <div class="campo">
+        <label for="usuario">Usuario</label>
+        <input id="usuario" name="usuario" required autocomplete="username" placeholder="Nombre de usuario">
+      </div>
+      <div class="campo">
+        <label for="clave">Contraseña</label>
+        <input id="clave" type="password" name="clave" required autocomplete="current-password" placeholder="Contraseña">
+      </div>
+      <button class="boton-primario ancho" type="submit">Ingresar al sistema</button>
+    </form>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

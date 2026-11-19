@@ -3,7 +3,7 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 
-from ant.alimento.alimento import AHervivoro, Alimento, Nectar
+from ant.alimento.alimento import ACarnivoro, AHervivoro, AOmnivoro, Alimento, Nectar
 
 
 class IHormiga(ABC):
@@ -27,6 +27,20 @@ class Hormiga(IHormiga):
 class HRastreadora(Hormiga):
     def comer(self, alimento: Alimento) -> bool:
         if not isinstance(alimento, AHervivoro):
+            self.morir()
+        return self.estado == "VIVA"
+
+
+class HSoldado(Hormiga):
+    def comer(self, alimento: Alimento) -> bool:
+        if not isinstance(alimento, ACarnivoro):
+            self.morir()
+        return self.estado == "VIVA"
+
+
+class HZangano(Hormiga):
+    def comer(self, alimento: Alimento) -> bool:
+        if not isinstance(alimento, AOmnivoro):
             self.morir()
         return self.estado == "VIVA"
 

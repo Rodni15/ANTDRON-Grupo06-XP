@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% block title %}Panel | ANTDRON{% endblock %}
+{% block content %}
+<section class="cabecera-pagina">
+  <div>
+    <p class="eyebrow">GRUPO {{ grupo }} · OPERACIONES</p>
+    <h1>Centro de coordinación</h1>
+  </div>
+  <div class="estado-sesion"><span></span> Sistema disponible</div>
+</section>
+
+<section class="resumen" aria-label="Resumen del sistema">
+  <article><span>Coordenadas</span><strong>{{ cantidad_coordenadas }}</strong><small>{{ cantidad_destruidas }} autorizadas</small></article>
+  <article><span>Hormigas</span><strong>{{ cantidad_hormigas }}</strong><small>registros persistentes</small></article>
+  <article><span>Energía</span><strong>{{ energia }}</strong><small>unidades disponibles</small></article>
+</section>
+
+<div class="rejilla-operaciones">
+  <section class="tarjeta" id="equipo">
+    <div class="cabecera-tarjeta"><div><p class="eyebrow">METODOLOGÍA XP</p><h2>Equipo del proyecto</h2></div></div>
+    <p class="titulo-equipo">{{ equipo }}</p>
+    <ul class="lista-equipo">
+      {% for integrante in integrantes %}
+      <li>
+        <span class="inicial">{{ integrante.nombre[0] }}</span>
+        <div><strong>{{ integrante.nombre }}</strong><small>{{ integrante.rol }}</small></div>
+        <code>{{ integrante.cedula[-2:] }}</code>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="tarjeta" id="dron">
+    <div class="cabecera-tarjeta"><div><p class="eyebrow">ANTCIBERDRON</p><h2>Estado del equipo</h2></div><span class="estado-badge">Activo</span></div>
+    <dl class="datos-dron">
+      <div><dt>Fuente de poder</dt><dd>{{ energia }} unidades</dd></div>
+      <div><dt>Láser delantero</dt><dd>{{ potencia_laser }} potencia</dd></div>
+      <div><dt>Metralleta</dt><dd>Disponible</dd></div>
+      <div><dt>Turbo reactor</dt><dd>{{ "Disponible" if energia > 0 else "Sin energía" }}</dd></div>
+    </dl>
+    <div class="acciones-dron">
+      <form method="post" action="{{ url_for('operar_dron') }}" data-carga>
+        <input type="hidden" name="accion" value="recargar">
+        <button class="boton-secundario" type="submit">Recargar</button>
+      </form>
+      <form method="post" action="{{ url_for('operar_dron') }}" data-carga>
+        <input type="hidden" name="accion" value="volar">
+        <button class="boton-secundario" type="submit">Activar vuelo</button>
+      </form>
+      <form method="post" action="{{ url_for('operar_dron') }}" class="reemplazo" data-carga>
+        <input type="hidden" name="accion" value="reemplazar">
+        <label for="capacidad">Nueva fuente</label>
+        <input id="capacidad" name="capacidad" type="number" min="1" max="1000" value="100" required>
+        <button class="boton-secundario" type="submit">Reemplazar</button>
+      </form>
+    </div>
+  </section>
+</div>
+
+<section class="tarjeta" id="coordenadas">
+  <div class="cabecera-tarjeta">
+    <div><p class="eyebrow">AUTÓMATA · BOMBA</p><h2>Coordenadas ucranianas</h2></div>
+    <form method="post" action="{{ url_for('cargar_coordenadas') }}" data-carga>
+      <button class="boton-primario" type="submit"><span>Cargar CSV</span></button>
+    </form>
+  </div>
+  {% if coordenadas %}
+  <div class="tabla-wrap">
+    <table>
+      <thead><tr><th>Geoposición</th><th>Lunes</th><th>Martes</th><th>Miércoles</th><th>Jueves</th><th>Viernes</th><th>Arsenal</th><th>Resultado</th></tr></thead>
+      <tbody>
+      {% for c in coordenadas %}
+      <tr>
+        <td><strong>{{ c.geoposicion }}</strong></td>
+        {% for horario in c.horarios %}<td>{{ horario or "—" }}</td>{% endfor %}
+        <td><code>{{ c.tipo }}</code></td>
+        <td><span class="resultado {{ 'positivo' if c.geoposicion in destruidas else 'neutro' }}">{{ "Autorizada" if c.geoposicion in destruidas else "No autorizada" }}</span></td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <div class="estado-vacio"><strong>Sin coordenadas cargadas</strong><span>Carga el archivo oficial para ejecutar la evaluación de la bomba.</span></div>
+  {% endif %}
+</section>
+
+<section class="tarjeta" id="hormiguero">
+  <div class="cabecera-tarjeta"><div><p class="eyebrow">PERSISTENCIA SQLITE</p><h2>Hormiguero virtual</h2></div></div>
+  <div class="panel-acciones">
+    <form method="post" action="{{ url_for('crear_larva') }}" class="formulario-compacto" data-carga>
+      <h3>Crear larva</h3>
+      <label for="sexo">Sexo</label>
+      <select id="sexo" name="sexo" required><option value="">Seleccionar</option><option value="hembra">Hembra</option><option value="macho">Macho</option></select>
+      <button class="boton-primario" type="submit">Crear larva</button>
+    </form>
+    <form method="post" action="{{ url_for('alimentar') }}" class="formulario-compacto" data-carga>
+      <h3>Alimentar hormiga</h3>
+      <label for="id_hormiga">Identificador</label>
+      <input id="id_hormiga" type="number" min="1" name="id_hormiga" placeholder="Ej. 1" required>
+      <label for="alimento">Alimento</label>
+      <select id="alimento" name="alimento" required><option value="">Seleccionar</option><option value="nectar">Néctar</option><option value="herbivoro">Herbívoro</option><option value="carnivoro">Carnívoro</option><option value="omnivoro">Omnívoro</option></select>
+      <button class="boton-secundario" type="submit">Aplicar alimento</button>
+    </form>
+  </div>
+  {% if hormigas %}
+  <div class="tabla-wrap">
+    <table>
+      <thead><tr><th>ID</th><th>Tipo</th><th>Sexo</th><th>Estado</th></tr></thead>
+      <tbody>{% for hormiga in hormigas %}<tr><td>{{ hormiga.Id }}</td><td>{{ hormiga.__class__.__name__ }}</td><td>{{ hormiga.sexo }}</td><td><span class="resultado {{ 'positivo' if hormiga.estado == 'VIVA' else 'muerto' }}">{{ hormiga.estado }}</span></td></tr>{% endfor %}</tbody>
+    </table>
+  </div>
+  {% else %}
+  <div class="estado-vacio"><strong>Aún no hay hormigas</strong><span>Crea una larva para comenzar el registro.</span></div>
+  {% endif %}
+</section>
+{% endblock %}
