@@ -1,6 +1,6 @@
 # Roles XP del Equipo (4 Integrantes) y Repartición por Partes
 
-**Fecha:** `[DD/MM/AAAA]` | **#Grupo:** `06` | **Lenguaje:** `Python 3.12` | **Diagramas:** `PlantUML` | **Metáfora:** `Hormiguero Cibernético`
+**Fecha:** `19/11/2026` | **#Grupo:** `06` | **Lenguaje:** `Python 3.12` | **Diagramas:** `PlantUML` | **Metáfora:** `Hormiguero Cibernético`
 
 > Este proyecto se organiza con **4 integrantes reales** cubriendo los **7 roles XP** (**Cliente**, **Gestor**, **Coach**, **Tracker**, **2 Programadores** y **Tester**) y repartiendo el desarrollo y entregables en **4 Partes coordinadas**.
 
@@ -13,7 +13,7 @@
 | **I1** | `1724490055` | **Veloz Ronny** | **Cliente (KGD)** + **Gestor (Big Boss)** | **Parte 2:** Autómata y documento | `5` (`Coord-05` · `abcdt+`) |
 | **I2** | `1722578703` | **Tamayo Oscar** | **Coach XP** + **Programador 1** | **Parte 3:** Hormigas y `AntCiberDron` | `3` (`Coord-03` · `abc`) |
 | **I3** | `1721396412` | **Yepez Analy** | **Tracker (Rastreador)** + **Programador 2** | **Parte 1:** Login, equipo y CSV | `2` (`Coord-02` · `ab*`) |
-| **I4** | `1726389099` | **Yaguari Mateo** | **Tester** *(QA / CI / Docker)* | **Parte 4:** Pantallas (`main.py`) y Docker | `9` (`Coord-09` · `ab*`) |
+| **I4** | `1726389099` | **Yaguari Mateo** | **Tester** *(QA / CI / Docker)* | **Parte 4:** Interfaz web Flask y Docker | `9` (`Coord-09` · `ab*`) |
 
 > **Nota sobre el Docente (`patmic`) y Expertos Parlantes:**
 > - **El Cliente XP operativo es Ronny Veloz (I1)** (miembro activo del equipo disponible para priorizar historias, resolver dudas de reglas y firmar aceptación). El docente `patmic` funge como *Sponsor / Evaluador final* y usuario con credenciales `patmic` / `123`.
@@ -28,7 +28,7 @@
 | **Cliente (KGD) + Gestor (Big Boss)** | **I1 · Ronny Veloz** | **Parte 2** | Implementa `BombaAutomata` (`ab* ∪ abc ∪ abcdt+` de las 4 cédulas), lógica de detonación e impresión de tabla de coordenadas a destruir; prioriza HU, firma aceptación, organiza reuniones, elabora portada/roles, Grafo + Gramática del Autómata y consolida el documento final. | `src/ant/iia/` (`BombaAutomata`), `02-Diseno/diagramas/03-automata-grafo-gramatica.md`, `01-Planificacion/01-historias-usuario/`, `01-Planificacion/02-plan-entregas/`, `01-Planificacion/06-reuniones/`, `03-Desarrollo/01-disponibilidad-cliente/`, documento final |
 | **Coach XP + Programador 1** | **I2 · Oscar Tamayo** | **Parte 3** | Implementa jerarquía `Hormiga` (`HLarva`, `HRastreadora`, etc.), `Alimento`, `IIA`, `AntCiberDron` (extremidades, metralleta, láser, turbo reactor, fuente con `IIA`, idiomas con expertos) y DAOs SQLite (`sqlite3`); elabora Diagrama de Clases y MER; vela por las prácticas XP (TDD, parejas, CRC, metáfora, reciclaje). | `src/ant/hormiguero/`, `src/ant/alimento/`, `src/ant/dron/`, `src/ant/db/`, `src/resources/`, `02-Diseno/diagramas/01-diagrama-clases.md`, `02-Diseno/diagramas/04-modelo-entidad-relacion.md`, `02-Diseno/` (Metáfora, CRC, Spikes, Reciclaje), `03-Desarrollo/03-programacion-parejas/` |
 | **Tracker + Programador 2** | **I3 · Analy Yepez** | **Parte 1** | Implementa Login (máx. 3 intentos: grupo + `patmic`/`123`), presentación del equipo y lectura de `Grupo06.csv` con animación de carga; coordina entregas de coordenadas hacia Parte 2 y Parte 3; mide velocidad, burndown y avance diario del equipo. | `src/ant/ruso/`, `src/pkAntCiberDronContract/` (`SistemaRuso`, `CoordenadaUK`, `Utility`), `data/Grupo06.csv`, `02-Diseno/diagramas/02-diagrama-casos-de-uso.md`, `01-Planificacion/03-velocidad-proyecto/`, `01-Planificacion/04-iteraciones/`, `01-Planificacion/05-rotaciones/` |
-| **Tester (QA / CI / Docker)** | **I4 · Mateo Yaguari** | **Parte 4** | Implementa pantallas de consola del Hormiguero Virtual (`Hormiguero.crear_hormiga()`, `listar()`) y flujo completo en `main.py`; dockeriza (`Dockerfile`, `docker-compose.yml`), mantiene suite `pytest` y GitHub Actions (`CI`), elabora Diagrama de Arquitectura y certifica 0 incidentes (`-0.5`). | `src/ant/ui/`, `main.py`, `tests/`, `Dockerfile`, `docker-compose.yml`, `.github/workflows/ci.yml`, `02-Diseno/diagramas/05-arquitectura-aplicacion.md`, `03-Desarrollo/02-unidad-pruebas-tdd/`, `03-Desarrollo/04-integracion-continua/`, `04-Pruebas/` |
+| **Tester (QA / CI / Docker)** | **I4 · Mateo Yaguari** | **Parte 4** | Implementa interfaz web del Hormiguero Virtual (`Hormiguero.crear_hormiga()`, `listar()`) y flujo completo en `main.py`; dockeriza (`Dockerfile`, `docker-compose.yml`), mantiene suite `pytest` y GitHub Actions (`CI`), elabora Diagrama de Arquitectura y certifica 0 incidentes (`-0.5`). | `src/ant/ui/`, `main.py`, `tests/`, `Dockerfile`, `docker-compose.yml`, `.github/workflows/ci.yml`, `02-Diseno/diagramas/05-arquitectura-aplicacion.md`, `03-Desarrollo/02-unidad-pruebas-tdd/`, `03-Desarrollo/04-integracion-continua/`, `04-Pruebas/` |
 
 ---
 

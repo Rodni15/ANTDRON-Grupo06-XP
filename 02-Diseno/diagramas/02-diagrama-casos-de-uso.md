@@ -1,5 +1,7 @@
 # Diagrama de Casos de Uso
 
+![02-diagrama-casos-de-uso](img/02-diagrama-casos-de-uso.png)
+
 Elaborado por: Analy Yépez
 
 ![Diagrama de casos de uso](img/02-casos-de-uso.png)

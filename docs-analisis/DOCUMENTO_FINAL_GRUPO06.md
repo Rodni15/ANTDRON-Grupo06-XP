@@ -143,3 +143,7 @@ sobre el alfabeto de arsenal bélico $\Sigma = \{ a \text{ (Avión)}, b \text{ (
 | **Fase IV — Pruebas** | Guía de implantación Docker y **Checklist de Aceptación** firmada por Cliente (`I1`) y Tester (`I4`) | [`04-Pruebas/`](../04-Pruebas/README.md) |
 | **Revisión de Cumplimiento** | Auditoría punto por punto contra el PDF y **68 casos de prueba** aprobados (`tests/`) | [`REVISION_CUMPLIMIENTO_2026-11-18.md`](REVISION_CUMPLIMIENTO_2026-11-18.md) |
 | **Trazabilidad Git / PRs** | Registro de commits, enlaces a PRs `#1`–`#4` y dashboard de actividades | [`evidencias/DASHBOARD_ACTIVIDADES.md`](../evidencias/DASHBOARD_ACTIVIDADES.md) |
+
+## Confirmación final del equipo · 18/11/2026
+
+El equipo confirmó la ejecución satisfactoria de Docker y del recorrido funcional; la demostración está grabada en el video incluido en el paquete de entrega. Esta confirmación actualiza las anotaciones previas de Docker pendiente.

@@ -20,3 +20,7 @@
 | 12 | Entregados en **código PlantUML** los **5 diagramas obligatorios** (Clases, Casos de Uso, Grafo con Gramática del Autómata `{2,3,5,9}`, MER, Arquitectura con capa Flask) + bitácoras XP y [DOCUMENTO_FINAL_GRUPO06.md](../../docs-analisis/DOCUMENTO_FINAL_GRUPO06.md). | `HU-11` | `[x] Pass` | Analy / Ronny / Oscar / Mateo |
 
 **Firma Cliente (I1 · Ronny Veloz):** `Ronny Veloz (I1)` · **Firma Tester (I4 · Mateo Yaguari):** `Mateo Yaguari (I4)` · **Fecha:** `18/11/2026`
+
+## Confirmación final del equipo · 18/11/2026
+
+El equipo confirmó la ejecución satisfactoria de Docker y del recorrido funcional; la demostración está grabada en el video incluido en el paquete de entrega. Esta confirmación actualiza las anotaciones previas de Docker pendiente.

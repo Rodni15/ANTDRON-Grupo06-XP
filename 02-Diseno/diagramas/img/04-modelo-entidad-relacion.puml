@@ -1,0 +1,47 @@
+@startuml
+!pragma layout smetana
+title ANTDRON · Grupo 06 · Persistencia de la Parte 3
+hide circle
+skinparam linetype ortho
+
+entity HORMIGA {
+  * id : INTEGER <<PK>>
+  --
+  * tipo : TEXT
+  * sexo : TEXT
+  * estado : TEXT
+}
+
+entity ALIMENTACION {
+  * id : INTEGER <<PK>>
+  --
+  * hormiga_id : INTEGER <<FK>>
+  * alimento : TEXT
+  * resultado : TEXT
+  * fecha : TEXT
+}
+
+entity ENTRENAMIENTO_IDIOMA {
+  * id : INTEGER <<PK>>
+  --
+  * experto : TEXT
+  * idioma : TEXT
+  * area : TEXT
+  * contenido : TEXT
+  * fecha : TEXT
+}
+
+HORMIGA ||--o{ ALIMENTACION : registra
+
+note right of HORMIGA
+  Tipo: HLarva o HRastreadora.
+  Estado: VIVA o MUERTA.
+  La metamorfosis conserva el id.
+end note
+
+note right of ENTRENAMIENTO_IDIOMA
+  Idioma: EN o ES.
+  Experto: nombre registrado tras
+  verificar su certificación en el dominio.
+end note
+@enduml
