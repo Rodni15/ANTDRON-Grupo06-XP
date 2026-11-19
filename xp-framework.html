@@ -348,8 +348,26 @@
       <button class="tab-btn" data-tab="tab-hu">3. Tarjetas de Usuario (11 HU)</button>
       <button class="tab-btn" data-tab="tab-roles">4. Equipo (4 Integrantes) &amp; Rotaciones</button>
       <button class="tab-btn" data-tab="tab-gaps">5. Brechas PDF Original vs .md</button>
+      <button class="tab-btn" data-tab="tab-evidencias">Dashboard de actividades y evidencias</button>
       <button class="tab-btn" data-tab="tab-tree">6. Carpetas &amp; Prompt Maestro</button>
     </nav>
+
+<section id="tab-evidencias" class="panel">
+<h2>Dashboard de actividades y evidencias</h2>
+<p>Revisión del 18 de noviembre de 2026. Estados comprobados mediante Git y pruebas locales. La Parte 4 revisada corresponde al commit 1f5870a.</p>
+<table><thead><tr><th>Actividad</th><th>Responsable y rol</th><th>Estado comprobado</th><th>Evidencia</th></tr></thead><tbody>
+<tr><td>Login, presentación y CSV</td><td>Analy · Tracker y Programadora</td><td>Integrada en main</td><td><a href="https://github.com/Rodni15/ANTDRON-Grupo06-XP/pull/1">PR #1</a></td></tr>
+<tr><td>Autómata, bomba y documento</td><td>Ronny · Cliente y Gestor</td><td>Integrada en main</td><td><a href="https://github.com/Rodni15/ANTDRON-Grupo06-XP/pull/2">PR #2</a></td></tr>
+<tr><td>Rastreadora, dron, SQLite y diagramas</td><td>Oscar · Coach y Programador</td><td>Integrada en main</td><td><a href="https://github.com/Rodni15/ANTDRON-Grupo06-XP/pull/3">PR #3</a></td></tr>
+<tr><td>Interfaz web y configuración Docker</td><td>Mateo · Tester</td><td>Integrada en main; correcciones en esta revisión</td><td><a href="https://github.com/Rodni15/ANTDRON-Grupo06-XP/pull/4">PR #4</a></td></tr>
+<tr><td>Suite de pruebas web y dominio</td><td>Verificación técnica local</td><td>68 pruebas aprobadas; Python 3.14</td><td><a href="docs-analisis/REVISION_CUMPLIMIENTO_2026-11-18.md">Informe de revisión</a></td></tr>
+<tr><td>Etiquetas por fila, idiomas, loading y cédulas completas</td><td>Mateo con revisión del equipo</td><td>Corregidos; revisión visual pendiente</td><td><a href="docs-analisis/REVISION_CUMPLIMIENTO_2026-11-18.md">Hallazgos reproducidos</a></td></tr>
+<tr><td>Prueba en Docker y revisión visual</td><td>Mateo · Tester</td><td>Pendientes de ejecutar</td><td>Agregar captura y resultado al realizarlas</td></tr>
+<tr><td>Videos de planificación, revisión y pruebas</td><td>Los cuatro integrantes</td><td>Pendientes de grabar</td><td>Agregar enlace al video cuando se grabe</td></tr>
+</tbody></table>
+<p><a href="evidencias/DASHBOARD_ACTIVIDADES.md">Historial de actividades y commits</a></p>
+<p>La fecha y los estados corresponden a esta revisión. Actualizar cada actividad con la prueba y el enlace de su evidencia cuando el equipo la complete.</p>
+</section>
 
     <!-- TAB 1: XP FRAMEWORK -->
     <section id="tab-xp" class="panel active">
@@ -1328,10 +1346,10 @@ CI --> DOCKER
     ];
 
     const MEMBERS = [
-      { id: "I3", name: "Analy Yepez — 1721396412 (Parte 1)", roles: ["Tracker (Rastreador)", "Programador 2", "Parte 1: Login, equipo y CSV"], resp: "Implementa Login (máx. 3 intentos), presentación del equipo y lectura de Grupo06.csv con animación de carga; entrega Casos de Uso, prioriza historias HU, resuelve dudas y firma aceptación final. Último dígito: 2 (Coord-02 · ab*).", files: ["02-Diseno/diagramas/02-diagrama-casos-de-uso.md", "01-Planificacion/01-historias-usuario/TARJETAS_HISTORIAS_USUARIO.md", "04-Pruebas/02-pruebas-aceptacion/CHECKLIST_ACEPTACION_CLIENTE.md"] },
+      { id: "I3", name: "Analy Yepez — 1721396412 (Parte 1)", roles: ["Tracker (Rastreador)", "Programador 2", "Parte 1: Login, equipo y CSV"], resp: "Implementa Login (máx. 3 intentos), presentación del equipo y lectura de Grupo06.csv con animación de carga; entrega Casos de Uso y registra el avance, las métricas y los bloqueos del equipo. Último dígito: 2 (Coord-02 · ab*).", files: ["02-Diseno/diagramas/02-diagrama-casos-de-uso.md", "01-Planificacion/01-historias-usuario/TARJETAS_HISTORIAS_USUARIO.md", "04-Pruebas/02-pruebas-aceptacion/CHECKLIST_ACEPTACION_CLIENTE.md"] },
       { id: "I1", name: "Ronny Veloz — 1724490055 (Parte 2)", roles: ["Cliente (KGD)", "Gestor (Big Boss)", "Parte 2: Autómata y documento"], resp: "Implementa BombaAutomata ({2,3,5,9} -> ab* ∪ abc ∪ abcdt+), Bomba y tabla de destrucción; elabora Grafo+Gramática del Autómata, portada/roles y consolida el documento final XP. Último dígito: 5 (Coord-05 · abcdt+).", files: ["02-Diseno/diagramas/03-automata-grafo-gramatica.md", "02-Diseno/01-metafora-sistema/METAFORA_DEL_SISTEMA.md", "02-Diseno/02-tarjetas-crc/TARJETAS_CRC.md"] },
-      { id: "I2", name: "Oscar Tamayo — 1722578703 (Parte 3)", roles: ["Coach XP", "Programador 1", "Parte 3: Hormigas y AntCiberDron"], resp: "Implementa Hormiga/HLarva/Alimento, IIA, AntCiberDron (extremidades, armas, turbo, fuente, idiomas) y SQLite; elabora Diagrama de Clases y MER; mide velocidad y burndown. Último dígito: 3 (Coord-03 · abc).", files: ["02-Diseno/diagramas/01-diagrama-clases.md", "02-Diseno/diagramas/04-modelo-entidad-relacion.md", "01-Planificacion/03-velocidad-proyecto/VELOCIDAD_Y_METRICAS.md"] },
-      { id: "I4", name: "Mateo Yaguari — 1726389099 (Parte 4)", roles: ["Tester (QA / CI / Docker)", "Parte 4: Pantallas y Docker"], resp: "Implementa pantallas de consola del Hormiguero Virtual y flujo completo en main.py; dockeriza, mantiene suite pytest/CI, elabora Diagrama de Arquitectura y certifica 0 incidentes (-0.5). Último dígito: 9 (Coord-09 · ab*).", files: ["02-Diseno/diagramas/05-arquitectura-aplicacion.md", "03-Desarrollo/02-unidad-pruebas-tdd/MATRIZ_CASOS_TDD.md", "04-Pruebas/01-implantacion/GUIA_IMPLANTACION_DOCKER.md"] }
+      { id: "I2", name: "Oscar Tamayo — 1722578703 (Parte 3)", roles: ["Coach XP", "Programador 1", "Parte 3: Hormigas y AntCiberDron"], resp: "Implementa Hormiga/HLarva/Alimento, IIA, AntCiberDron (extremidades, armas, turbo, fuente, idiomas) y SQLite; elabora Diagrama de Clases y MER; coordina revisiones y promueve pruebas, diseño simple y mejora del proceso. Último dígito: 3 (Coord-03 · abc).", files: ["02-Diseno/diagramas/01-diagrama-clases.md", "02-Diseno/diagramas/04-modelo-entidad-relacion.md", "01-Planificacion/03-velocidad-proyecto/VELOCIDAD_Y_METRICAS.md"] },
+      { id: "I4", name: "Mateo Yaguari — 1726389099 (Parte 4)", roles: ["Tester (QA / CI / Docker)", "Parte 4: Pantallas y Docker"], resp: "Implementa la interfaz web Flask en web_app.py; prepara Docker y CI, verifica criterios de aceptación y registra fallos y resultados de pruebas. Último dígito: 9 (Coord-09 · ab*).", files: ["02-Diseno/diagramas/05-arquitectura-aplicacion.md", "03-Desarrollo/02-unidad-pruebas-tdd/MATRIZ_CASOS_TDD.md", "04-Pruebas/01-implantacion/GUIA_IMPLANTACION_DOCKER.md"] }
     ];
 
     const MASTER_PROMPT = `Eres un equipo de ingeniería senior trabajando bajo la metodología Extreme Programming (XP) sobre el template del proyecto ANTDRON / AntCiberDron (Grupo 06, EPN).

@@ -11,7 +11,7 @@ from flask import Flask, flash, redirect, render_template, request, session, url
 from ant.alimento.alimento import ACarnivoro, AHervivoro, AOmnivoro, Nectar
 from ant.db.sqlite_connection import SqliteConnection
 from ant.dron.ant_ciber_dron import AntCiberDron, FuenteDePoder
-from ant.dron.modulo_idioma import ModuloIdioma
+from ant.dron.modulo_idioma import Area, ExpertoParlante, Idioma, ModuloIdioma
 from ant.hormiguero.hormiguero import Hormiguero
 from ant.iia.bomba import Bomba
 from ant.ruso.auth_service import MAX_INTENTOS
@@ -34,6 +34,10 @@ def create_app(test_config=None):
     equipo, grupo, integrantes = Integrante.cargarEquipo(RAIZ / "data" / "integrantes.json")
     sistema = SistemaRuso(integrantes, delayMs=0)
     almacenamiento = SqliteConnection(app.config["DATABASE"])
+    expertos = {
+        "experto-en": ExpertoParlante("Experto de inglés (simulación)", Idioma.EN, True),
+        "experto-es": ExpertoParlante("Experto de español (simulación)", Idioma.ES, True),
+    }
     hormiguero = Hormiguero(almacenamiento)
     dron = AntCiberDron(Bomba(), modulo_idioma=ModuloIdioma(almacenamiento))
     app.extensions["antdron"] = {
@@ -90,8 +94,15 @@ def create_app(test_config=None):
     @app.get("/panel")
     @protegido
     def panel():
-        coordenadas = session.get("coordenadas", [])
-        destruidas = session.get("destruidas", [])
+        coordenadas = []
+        if session.get("csv_cargado"):
+            filas = sistema.readCoord(RAIZ / "data" / f"Grupo{grupo:02d}.csv", mostrar=False)
+            coordenadas = [
+                {"geoposicion": c.getGeoposicion(), "tipo": c.getTipoArsenal(),
+                 "horarios": c.getHorarios(), "aceptada": dron.buscar(c.getTipoArsenal())}
+                for c in filas
+            ]
+        destruidas = [c for c in coordenadas if c["aceptada"]]
         hormigas = hormiguero.listarHormigas()
         return render_template(
             "dashboard.html",
@@ -107,6 +118,9 @@ def create_app(test_config=None):
             cantidad_hormigas=len(hormigas),
             modulo_idioma=dron.moduloIdioma,
             potencia_laser=dron.dispararLaser(),
+            expertos=expertos,
+            idiomas=list(Idioma),
+            areas=list(Area),
         )
 
     @app.post("/coordenadas")
@@ -119,16 +133,28 @@ def create_app(test_config=None):
             session["destruidas"] = []
             flash("No se encontraron coordenadas válidas en el CSV.", "error")
             return redirect(url_for("panel", _anchor="coordenadas"))
-        serializadas = [
-            {"geoposicion": c.getGeoposicion(), "tipo": c.getTipoArsenal(), "horarios": c.getHorarios()}
-            for c in coordenadas
-        ]
-        session["coordenadas"] = serializadas
-        session["destruidas"] = [
-            c["geoposicion"] for c in serializadas if dron.buscar(c["tipo"])
-        ]
-        flash(f"Se cargaron {len(serializadas)} coordenadas.", "success")
+        session.pop("coordenadas", None)
+        session.pop("destruidas", None)
+        session["csv_cargado"] = True
+        session["animar_csv"] = True
+        flash(f"Se cargaron {len(coordenadas)} coordenadas.", "success")
         return redirect(url_for("panel", _anchor="coordenadas"))
+
+    @app.post("/idiomas/entrenar")
+    @protegido
+    def entrenar_idioma():
+        try:
+            experto = expertos[request.form.get("experto", "")]
+            aceptado = dron.moduloIdioma.entrenar(
+                Idioma(request.form.get("idioma")),
+                Area(request.form.get("area")),
+                request.form.get("contenido", ""), experto,
+            )
+            flash("Entrenamiento guardado." if aceptado else "Selecciona un experto del idioma y contenido válido.",
+                  "success" if aceptado else "error")
+        except (KeyError, ValueError):
+            flash("Idioma, área o experto inválido.", "error")
+        return redirect(url_for("panel", _anchor="idiomas"))
 
     @app.post("/hormiguero/crear")
     @protegido
