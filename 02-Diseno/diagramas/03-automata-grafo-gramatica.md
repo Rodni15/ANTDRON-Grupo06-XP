@@ -1,5 +1,7 @@
 # Diagrama Obligatorio 3: Autómata de la Bomba (Definición Formal, Grafo PlantUML y Gramática — Python 3.12)
 
+![03-automata-grafo-gramatica](img/03-automata-grafo-gramatica.png)
+
 > **Responsable (Parte 2):** **Ronny Veloz (`I1` · Cliente + Gestor)** · **Historias de Usuario asociadas:** **`HU-03`** *(Bomba Inteligente con Autómata)* y **`HU-11`** *(5 Diagramas Obligatorios y Documento Final)*  
 > **Regla oficial del PDF:**  
 > Se toma el **último dígito de la cédula de cada integrante del equipo** (4 integrantes $\rightarrow$ hasta 4 coordenadas distintas).  

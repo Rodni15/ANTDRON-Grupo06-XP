@@ -1,0 +1,61 @@
+@startuml
+!pragma layout smetana casos_de_uso
+left to right direction
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam usecase {
+  BackgroundColor #EEF4FB
+  BorderColor #2B6CB0
+}
+skinparam actorBorderColor #1F2933
+skinparam rectangleBorderColor #52606D
+
+title Diagrama de Casos de Uso — ANTDRON / AntCiberDron (Grupo 06)
+
+actor "Usuario KGD" as U
+actor "Agente KGD\n(integrante)" as A
+actor "Docente evaluador\n(patmic)" as D
+
+A --|> U
+D --|> U
+
+actor "Experto parlante\n(inglés / español)" as E
+
+rectangle "Sistema ANTDRON – Hormiguero Virtual" {
+  usecase "UC-01 Iniciar sesión" as UC01
+  usecase "UC-02 Bloquear acceso\n(3 intentos fallidos)" as UC02
+  usecase "UC-03 Ver datos del equipo" as UC03
+  usecase "UC-04 Cargar coordenadas\ndel CSV con animación" as UC04
+  usecase "UC-05 Buscar arsenal y ver\ncoordenadas a destruir" as UC05
+  usecase "UC-06 Evaluar tipo de arsenal\ncon el autómata" as UC06
+  usecase "UC-07 Crear hormiga\n(nace como HLarva)" as UC07
+  usecase "UC-08 Alimentar hormiga" as UC08
+  usecase "UC-09 Transformar larva\nen su tipo de hormiga" as UC09
+  usecase "UC-10 Operar AntCiberDron\n(volar, metralleta, láser)" as UC10
+  usecase "UC-11 Recargar o reemplazar\nfuente de poder (IIA)" as UC11
+  usecase "UC-12 Entrenar idioma\n(léxico, gramática, fonética)" as UC12
+}
+
+U --> UC01
+U --> UC03
+U --> UC04
+U --> UC05
+U --> UC07
+U --> UC08
+U --> UC10
+U --> UC11
+UC12 <-- E
+
+UC02 .> UC01 : <<extend>>
+UC05 .> UC04 : <<include>>
+UC05 .> UC06 : <<include>>
+UC09 .> UC08 : <<extend>>
+UC11 .> UC10 : <<extend>>
+
+note bottom of U
+  Todos sus casos de uso
+  requieren haber iniciado
+  sesión (UC-01).
+end note
+@enduml
