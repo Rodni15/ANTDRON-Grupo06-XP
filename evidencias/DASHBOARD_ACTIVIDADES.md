@@ -1,0 +1,36 @@
+# Dashboard de actividades · ANTDRON Grupo 06
+
+Revisión realizada el 18 de noviembre de 2026. Fuente de la aplicación revisada: PR #4, commit 1f5870a. El historial de Git acredita los cambios publicados y sus autores registrados.
+
+| Actividad | Responsable acordado | Estado comprobado | Evidencia |
+| --- | --- | --- | --- |
+| Login, equipo y CSV | Analy | Integrada en main | [PR #1](https://github.com/Rodni15/ANTDRON-Grupo06-XP/pull/1) |
+| Autómata y bomba | Ronny | Integrada en main | [PR #2](https://github.com/Rodni15/ANTDRON-Grupo06-XP/pull/2) |
+| Hormigas, dron y SQLite | Oscar | Integrada en main | [PR #3](https://github.com/Rodni15/ANTDRON-Grupo06-XP/pull/3) |
+| Interfaz web y Docker | Mateo | Integrada mediante PR #4; ajustes incluidos en esta revisión | [PR #4](https://github.com/Rodni15/ANTDRON-Grupo06-XP/pull/4) |
+| Pruebas de integración web | Revisión local | 68 pruebas aprobadas | [Informe de revisión](../docs-analisis/REVISION_CUMPLIMIENTO_2026-11-18.md) |
+| Resultado por fila del CSV | Parte 4 | Corregido y comprobado por prueba de regresión | [Informe de revisión](../docs-analisis/REVISION_CUMPLIMIENTO_2026-11-18.md) |
+| Pantalla de idiomas EN/ES | Parte 4 | Implementada y probada | [Informe de revisión](../docs-analisis/REVISION_CUMPLIMIENTO_2026-11-18.md) |
+| Animación de carga por coordenada | Parte 4 | Implementada; revisión visual pendiente | [Informe de revisión](../docs-analisis/REVISION_CUMPLIMIENTO_2026-11-18.md) |
+| Prueba real de Docker | Equipo | Pendiente de ejecutar | [Dockerfile](https://github.com/Rodni15/ANTDRON-Grupo06-XP/blob/1f5870a/Dockerfile) |
+
+## Historial de cambios
+
+Las fechas son las registradas por Git, con su zona horaria. Los alias se conservan tal como aparecen en el historial. La asignación de responsables de arriba procede del reparto del equipo.
+
+| Fecha registrada | Autor registrado | Actividad | Commit |
+| --- | --- | --- | --- |
+| 2026-11-18T11:36:04-05:00 | NaikiTef | Cambios realizados web | [1f5870a](https://github.com/Rodni15/ANTDRON-Grupo06-XP/commit/1f5870aa2073a420ad89dd7357ec0a52c0b5e482) |
+| 2026-11-17T21:01:33-05:00 | OscarTamayoL | Merge pull request #3 from Rodni15/feature/parte3-hormigas-dron | [8881ecd](https://github.com/Rodni15/ANTDRON-Grupo06-XP/commit/8881ecd542f33af101aa86c7c8d6436972919574) |
+| 2026-11-17T20:58:34-05:00 | OscarTamayoL | Merge pull request #2 from Rodni15/feature/parte2-automata | [88aabea](https://github.com/Rodni15/ANTDRON-Grupo06-XP/commit/88aabea4d1c68fd21e27bea9c4bb035e554fd16e) |
+| 2026-11-17T20:52:22-05:00 | Oscar Tamayo | Validar alfabeto exacto y probar la bomba con el dron | [47914cb](https://github.com/Rodni15/ANTDRON-Grupo06-XP/commit/47914cb36b14d1fb4b4b65996c703d0cb000b3da) |
+| 2026-11-17T20:52:21-05:00 | Oscar Tamayo | Integrar la Parte 2 para pruebas del dron | [de67891](https://github.com/Rodni15/ANTDRON-Grupo06-XP/commit/de678917b59af868b64611ffd805aa2a3d8aa0d8) |
+| 2026-11-17T20:51:23-05:00 | Oscar Tamayo | Implementar Parte 3 del grupo 06 | [e1e35fe](https://github.com/Rodni15/ANTDRON-Grupo06-XP/commit/e1e35fefe057ce550bbf8675078005c4f8e0269b) |
+| 2026-11-17T20:20:59-05:00 | Rodni | Parte 2: BombaAutomata, Bomba, mostrar_destruir, tests TDD y documento final | [8a0144b](https://github.com/Rodni15/ANTDRON-Grupo06-XP/commit/8a0144ba53faefb83328b3b22f9dd3b3cddacba4) |
+| 2026-11-17T20:02:24-05:00 | Rodni15 | Merge pull request #1 from Rodni15/feature/parte1-login-csv | [7344a58](https://github.com/Rodni15/ANTDRON-Grupo06-XP/commit/7344a585d130d2c12b8ff2d960376bcd83c782d5) |
+| 2026-11-17T19:56:03-05:00 | Analy Yépez | Casos de uso: diagrama en PlantText y encabezado simplificado | [c52406b](https://github.com/Rodni15/ANTDRON-Grupo06-XP/commit/c52406b2ca5434df6d262d194bb0940e2f427ddc) |
+| 2026-11-17T19:35:31-05:00 | Analy Yépez | Parte 1: login, equipo, Grupo06.csv, casos de uso, metricas Tracker y roles acordados | [0c65f97](https://github.com/Rodni15/ANTDRON-Grupo06-XP/commit/0c65f9704ca52939d906a6ed1cd22e8b70b7b907) |
+| 2026-11-17T18:46:23-05:00 | Rodni | docs: asignar integrantes, cedulas, partes 1-4 y automata real {2,3,5,9} | [cacc308](https://github.com/Rodni15/ANTDRON-Grupo06-XP/commit/cacc308d652a5aa44e677d042d8a640ca9218a6d) |
+| 2026-11-17T18:19:10-05:00 | Rodni | chore: inicializar repositorio XP ANTDRON Grupo 06 (Python 3.12 + PlantUML) | [497f559](https://github.com/Rodni15/ANTDRON-Grupo06-XP/commit/497f55935c487f6fda80eabd86adce372054f63b) |
+
+[Descargar historial en CSV](commits.csv)

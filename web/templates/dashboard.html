@@ -1,5 +1,23 @@
 {% extends "base.html" %}
-{% block title %}Panel | ANTDRON{% endblock %}
+{% block title %}Panel | ANTDRON
+<section class="tarjeta" id="idiomas">
+<h2>4. Registra enseñanzas de inglés y español</h2>
+<p>El enunciado pide que el dron aprenda inglés y español mediante expertos parlantes en léxico, gramática y fonética. Esta función guarda enseñanzas para consultarlas después.</p>
+<p>Léxico significa palabras, gramática son reglas para formar frases y fonética es pronunciación. Prueba ES con el experto de español, léxico y «hola», o EN con el experto de inglés y «hello».</p>
+<p>Los expertos son personajes certificados de la simulación. El entrenamiento registra contenidos; la búsqueda del CSV sigue las reglas del autómata.</p>
+<form method="post" action="{{ url_for('entrenar_idioma') }}" class="formulario-compacto">
+<label>Idioma<select name="idioma">{% for idioma in idiomas %}<option value="{{ idioma.value }}">{{ 'Español' if idioma.value == 'ES' else 'Inglés' }}</option>{% endfor %}</select></label>
+<label>Experto<select name="experto">{% for id, experto in expertos.items() %}<option value="{{ id }}">{{ experto.nombre }}</option>{% endfor %}</select></label>
+<label>Área<select name="area">{% for area in areas %}<option value="{{ area.value }}">{{ area.value }}</option>{% endfor %}</select></label>
+<label>Contenido<input name="contenido" required maxlength="1000"></label>
+<button class="boton-primario" type="submit">Guardar enseñanza</button>
+</form>
+{% for idioma in idiomas %}
+<h3>{{ 'Español' if idioma.value == 'ES' else 'Inglés' }}</h3>
+<ul>{% for registro in modulo_idioma.consultar(idioma) %}<li>{{ registro.area.value }} · {{ registro.contenido }} · {{ registro.experto.nombre }}</li>{% else %}<li>Sin enseñanzas registradas.</li>{% endfor %}</ul>
+{% endfor %}
+</section>
+{% endblock %}
 {% block content %}
 <section class="cabecera-pagina">
   <div>
@@ -9,13 +27,6 @@
   <div class="estado-sesion"><span></span> Sistema disponible</div>
 </section>
 
-<section class="resumen" aria-label="Resumen del sistema">
-  <article><span>Coordenadas</span><strong>{{ cantidad_coordenadas }}</strong><small>{{ cantidad_destruidas }} autorizadas</small></article>
-  <article><span>Hormigas</span><strong>{{ cantidad_hormigas }}</strong><small>registros persistentes</small></article>
-  <article><span>Energía</span><strong>{{ energia }}</strong><small>unidades disponibles</small></article>
-</section>
-
-<div class="rejilla-operaciones">
   <section class="tarjeta" id="equipo">
     <div class="cabecera-tarjeta"><div><p class="eyebrow">METODOLOGÍA XP</p><h2>Equipo del proyecto</h2></div></div>
     <p class="titulo-equipo">{{ equipo }}</p>
@@ -24,69 +35,20 @@
       <li>
         <span class="inicial">{{ integrante.nombre[0] }}</span>
         <div><strong>{{ integrante.nombre }}</strong><small>{{ integrante.rol }}</small></div>
-        <code>{{ integrante.cedula[-2:] }}</code>
+        <code>{{ integrante.cedula }}</code>
       </li>
       {% endfor %}
     </ul>
   </section>
 
-  <section class="tarjeta" id="dron">
-    <div class="cabecera-tarjeta"><div><p class="eyebrow">ANTCIBERDRON</p><h2>Estado del equipo</h2></div><span class="estado-badge">Activo</span></div>
-    <dl class="datos-dron">
-      <div><dt>Fuente de poder</dt><dd>{{ energia }} unidades</dd></div>
-      <div><dt>Láser delantero</dt><dd>{{ potencia_laser }} potencia</dd></div>
-      <div><dt>Metralleta</dt><dd>Disponible</dd></div>
-      <div><dt>Turbo reactor</dt><dd>{{ "Disponible" if energia > 0 else "Sin energía" }}</dd></div>
-    </dl>
-    <div class="acciones-dron">
-      <form method="post" action="{{ url_for('operar_dron') }}" data-carga>
-        <input type="hidden" name="accion" value="recargar">
-        <button class="boton-secundario" type="submit">Recargar</button>
-      </form>
-      <form method="post" action="{{ url_for('operar_dron') }}" data-carga>
-        <input type="hidden" name="accion" value="volar">
-        <button class="boton-secundario" type="submit">Activar vuelo</button>
-      </form>
-      <form method="post" action="{{ url_for('operar_dron') }}" class="reemplazo" data-carga>
-        <input type="hidden" name="accion" value="reemplazar">
-        <label for="capacidad">Nueva fuente</label>
-        <input id="capacidad" name="capacidad" type="number" min="1" max="1000" value="100" required>
-        <button class="boton-secundario" type="submit">Reemplazar</button>
-      </form>
-    </div>
-  </section>
-</div>
-
-<section class="tarjeta" id="coordenadas">
-  <div class="cabecera-tarjeta">
-    <div><p class="eyebrow">AUTÓMATA · BOMBA</p><h2>Coordenadas ucranianas</h2></div>
-    <form method="post" action="{{ url_for('cargar_coordenadas') }}" data-carga>
-      <button class="boton-primario" type="submit"><span>Cargar CSV</span></button>
-    </form>
-  </div>
-  {% if coordenadas %}
-  <div class="tabla-wrap">
-    <table>
-      <thead><tr><th>Geoposición</th><th>Lunes</th><th>Martes</th><th>Miércoles</th><th>Jueves</th><th>Viernes</th><th>Arsenal</th><th>Resultado</th></tr></thead>
-      <tbody>
-      {% for c in coordenadas %}
-      <tr>
-        <td><strong>{{ c.geoposicion }}</strong></td>
-        {% for horario in c.horarios %}<td>{{ horario or "—" }}</td>{% endfor %}
-        <td><code>{{ c.tipo }}</code></td>
-        <td><span class="resultado {{ 'positivo' if c.geoposicion in destruidas else 'neutro' }}">{{ "Autorizada" if c.geoposicion in destruidas else "No autorizada" }}</span></td>
-      </tr>
-      {% endfor %}
-      </tbody>
-    </table>
-  </div>
-  {% else %}
-  <div class="estado-vacio"><strong>Sin coordenadas cargadas</strong><span>Carga el archivo oficial para ejecutar la evaluación de la bomba.</span></div>
-  {% endif %}
+<section class="tarjeta recorrido">
+<h2>Recorrido del proyecto</h2>
+<p>Crea una larva y aliméntala para obtener la rastreadora del grupo 6. Después explora su exoesqueleto, carga las coordenadas y comprueba qué palabras acepta la bomba. Al final registra enseñanzas de inglés o español.</p>
+<ol><li><a href="#hormiguero">Criar la rastreadora</a></li><li><a href="#dron">Explorar el AntCiberDron y su energía</a></li><li><a href="#coordenadas">Leer el CSV y evaluar sus palabras</a></li><li><a href="#idiomas">Enseñar idiomas al dron</a></li></ol>
 </section>
-
 <section class="tarjeta" id="hormiguero">
-  <div class="cabecera-tarjeta"><div><p class="eyebrow">PERSISTENCIA SQLITE</p><h2>Hormiguero virtual</h2></div></div>
+  <div class="cabecera-tarjeta"><div><p class="eyebrow">PERSISTENCIA SQLITE</p><h2>1. Crea y alimenta tu rastreadora</h2></div></div>
+  <p>Crea una larva, dale néctar para mantenerla como larva y luego alimento herbívoro para transformarla. Usa su identificador en el formulario de alimentación. Consulta el tipo y estado en la tabla después de cada acción.</p>
   <div class="panel-acciones">
     <form method="post" action="{{ url_for('crear_larva') }}" class="formulario-compacto" data-carga>
       <h3>Crear larva</h3>
@@ -113,5 +75,84 @@
   {% else %}
   <div class="estado-vacio"><strong>Aún no hay hormigas</strong><span>Crea una larva para comenzar el registro.</span></div>
   {% endif %}
+</section>
+  <section class="tarjeta" id="dron">
+    <div class="cabecera-tarjeta"><div><p class="eyebrow">ANTCIBERDRON</p><h2>2. Explora el exoesqueleto AntCiberDron</h2></div></div>
+    <p>El exoesqueleto de la rastreadora tiene seis patas, una metralleta en la delantera derecha, un láser en la izquierda y un turborreactor en la espalda. Cada vuelo simulado consume una unidad de energía; la potencia del láser sigue la energía disponible.</p>
+    <p>Para probarlo, instala una fuente de 2 unidades y activa el vuelo dos veces: quedará en 0. Un tercer intento se rechaza. Recarga para recuperar las 2 unidades. La app mantiene un dron compartido; la creación y alimentación de hormigas se registran por separado.</p>
+    <dl class="datos-dron">
+      <div><dt>Fuente de poder</dt><dd>{{ energia }} unidades</dd></div>
+      <div><dt>Láser delantero</dt><dd>{{ potencia_laser }} potencia</dd></div>
+      <div><dt>Metralleta</dt><dd>Disponible</dd></div>
+      <div><dt>Turbo reactor</dt><dd>{{ "Disponible" if energia > 0 else "Sin energía" }}</dd></div>
+    </dl>
+    <div class="acciones-dron">
+      <form method="post" action="{{ url_for('operar_dron') }}" data-carga>
+        <input type="hidden" name="accion" value="recargar">
+        <button class="boton-secundario" type="submit">Recargar</button>
+      </form>
+      <form method="post" action="{{ url_for('operar_dron') }}" data-carga>
+        <input type="hidden" name="accion" value="volar">
+        <button class="boton-secundario" type="submit">Activar vuelo</button>
+      </form>
+      <form method="post" action="{{ url_for('operar_dron') }}" class="reemplazo" data-carga>
+        <input type="hidden" name="accion" value="reemplazar">
+        <label for="capacidad">Nueva fuente</label>
+        <input id="capacidad" name="capacidad" type="number" min="1" max="1000" value="100" required>
+        <button class="boton-secundario" type="submit">Reemplazar</button>
+      </form>
+    </div>
+  </section><section class="tarjeta" id="coordenadas">
+  <div class="cabecera-tarjeta">
+    <div><p class="eyebrow">AUTÓMATA · BOMBA</p><h2>3. Carga las coordenadas ucranianas y evalúa sus palabras</h2></div>
+    <form method="post" action="{{ url_for('cargar_coordenadas') }}" data-carga>
+      <button class="boton-primario" type="submit"><span>Cargar CSV y evaluar</span></button>
+    </form>
+  </div>
+  <p>Grupo06.csv contiene una fila por cada dígito de las cuatro cédulas: 40 filas. Coord-03 representa el dígito 3. Los dígitos repetidos generan coordenadas repetidas con ejemplos de palabras. La bomba evalúa cada palabra individualmente.</p>
+  <p>Alfabeto del ejercicio: a = avión, b = barco, c = convoy, d = dron, t = tanque. Los últimos dígitos del equipo son 2, 3, 5 y 9. Su autómata acepta a seguida de cero o más b, la palabra abc y abcd seguida de una o más t.</p>
+  {% if coordenadas %}
+  <div class="tabla-wrap">
+    <table>
+      <thead><tr><th>Loading</th><th>Geoposición</th><th>Lunes</th><th>Martes</th><th>Miércoles</th><th>Jueves</th><th>Viernes</th><th>Arsenal</th><th>Resultado</th></tr></thead>
+      <tbody data-animar="{{ 'si' if session.pop('animar_csv', False) else 'no' }}">
+      {% for c in coordenadas %}
+      <tr data-coordenada>
+        <td data-loading>100%</td><td><strong>{{ c.geoposicion }}</strong></td>
+        {% for horario in c.horarios %}<td>{{ horario or "—" }}</td>{% endfor %}
+        <td><code>{{ c.tipo }}</code></td>
+        <td><span class="resultado {{ 'positivo' if c.aceptada else 'neutro' }}">{{ "Autorizada" if c.aceptada else "No autorizada" }}</span></td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <div class="estado-vacio"><strong>Sin coordenadas cargadas</strong><span>Carga el archivo oficial para ejecutar la evaluación de la bomba.</span></div>
+  {% endif %}
+</section>
+
+<section class="tarjeta">
+<h2>Resultado de la búsqueda</h2><p>Estas son las filas cuya palabra aceptó el autómata. El CSV del equipo produce 29 filas aceptadas de 40.</p>
+<div class="tabla-wrap"><table><thead><tr><th>Geoposición</th><th>Tipo Arsenal</th><th>Acción</th></tr></thead>
+<tbody>{% for c in destruidas %}<tr><td>{{ c.geoposicion }}</td><td>{{ c.tipo }}</td><td>true</td></tr>{% else %}<tr><td colspan="3">Carga el CSV para evaluar las palabras.</td></tr>{% endfor %}</tbody></table></div>
+</section>
+
+<section class="tarjeta" id="idiomas">
+<h2>4. Registra enseñanzas de inglés y español</h2>
+<p>El enunciado pide que el dron aprenda inglés y español mediante expertos parlantes en léxico, gramática y fonética. Esta función guarda enseñanzas para consultarlas después.</p>
+<p>Léxico significa palabras, gramática son reglas para formar frases y fonética es pronunciación. Prueba ES con el experto de español, léxico y «hola», o EN con el experto de inglés y «hello».</p>
+<p>Los expertos son personajes certificados de la simulación. El entrenamiento registra contenidos; la búsqueda del CSV sigue las reglas del autómata.</p>
+<form method="post" action="{{ url_for('entrenar_idioma') }}" class="formulario-compacto">
+<label>Idioma<select name="idioma">{% for idioma in idiomas %}<option value="{{ idioma.value }}">{{ 'Español' if idioma.value == 'ES' else 'Inglés' }}</option>{% endfor %}</select></label>
+<label>Experto<select name="experto">{% for id, experto in expertos.items() %}<option value="{{ id }}">{{ experto.nombre }}</option>{% endfor %}</select></label>
+<label>Área<select name="area">{% for area in areas %}<option value="{{ area.value }}">{{ area.value }}</option>{% endfor %}</select></label>
+<label>Contenido<input name="contenido" required maxlength="1000"></label>
+<button class="boton-primario" type="submit">Guardar enseñanza</button>
+</form>
+{% for idioma in idiomas %}
+<h3>{{ 'Español' if idioma.value == 'ES' else 'Inglés' }}</h3>
+<ul>{% for registro in modulo_idioma.consultar(idioma) %}<li>{{ registro.area.value }} · {{ registro.contenido }} · {{ registro.experto.nombre }}</li>{% else %}<li>Sin enseñanzas registradas.</li>{% endfor %}</ul>
+{% endfor %}
 </section>
 {% endblock %}

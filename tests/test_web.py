@@ -80,3 +80,53 @@ def test_operaciones_reales_dron(cliente):
         follow_redirects=True,
     )
     assert b"reemplazada" in reemplazo.data.lower()
+
+
+def test_resultado_es_individual_por_fila(cliente):
+    from ant.iia import Bomba
+    iniciar(cliente)
+    respuesta = cliente.post("/coordenadas", follow_redirects=True)
+    from html.parser import HTMLParser
+
+    class FilasCSV(HTMLParser):
+        def __init__(self):
+            super().__init__()
+            self.filas = []
+            self.actual = None
+
+        def handle_starttag(self, tag, attrs):
+            if tag == "tr" and "data-coordenada" in dict(attrs):
+                self.actual = []
+
+        def handle_data(self, dato):
+            if self.actual is not None and dato.strip():
+                self.actual.append(dato.strip())
+
+        def handle_endtag(self, tag):
+            if tag == "tr" and self.actual is not None:
+                self.filas.append(self.actual)
+                self.actual = None
+
+    parser = FilasCSV()
+    parser.feed(respuesta.get_data(as_text=True))
+    assert len(parser.filas) == 40
+    aceptadas = 0
+    for fila in parser.filas:
+        palabra, etiqueta = fila[-2:]
+        esperado = Bomba().explotar(palabra)
+        assert etiqueta == ("Autorizada" if esperado else "No autorizada")
+        aceptadas += esperado
+    assert aceptadas == 29
+
+
+def test_entrenamiento_web_y_rechazo_de_experto_incorrecto(cliente):
+    iniciar(cliente)
+    datos = {"idioma": "ES", "area": "léxico", "contenido": "hola", "experto": "experto-en"}
+    respuesta = cliente.post("/idiomas/entrenar", data=datos, follow_redirects=True)
+    assert b"Selecciona un experto" in respuesta.data
+    datos["experto"] = "experto-es"
+    respuesta = cliente.post("/idiomas/entrenar", data=datos, follow_redirects=True)
+    assert b"Entrenamiento guardado" in respuesta.data
+    assert b"hola" in cliente.get("/panel").data
+    datos["experto"] = "inventado"
+    assert b"inv" in cliente.post("/idiomas/entrenar", data=datos, follow_redirects=True).data
